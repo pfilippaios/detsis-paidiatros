@@ -4,6 +4,12 @@
   "use strict";
   document.documentElement.classList.add("js");
 
+  document.addEventListener("click", function (e) {
+    var disabledLink = e.target.closest('a[aria-disabled="true"]');
+    if (!disabledLink) return;
+    e.preventDefault();
+  });
+
   /* ---------- Mobile menu ---------- */
   var toggle = document.querySelector(".nav-toggle");
   var menu = document.getElementById("nav-menu");
