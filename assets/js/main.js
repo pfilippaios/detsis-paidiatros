@@ -49,6 +49,22 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  /* ---------- Back-to-top button (works on every viewport, so it lives
+     above the reduced-motion / mobile motion bail-out below) ---------- */
+  var toTop = document.createElement("button");
+  toTop.className = "to-top";
+  toTop.type = "button";
+  toTop.setAttribute("aria-label", "Επιστροφή στην κορυφή");
+  toTop.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+  document.body.appendChild(toTop);
+  var onTopScroll = function () { toTop.classList.toggle("is-visible", window.scrollY > 600); };
+  onTopScroll();
+  window.addEventListener("scroll", onTopScroll, { passive: true });
+  toTop.addEventListener("click", function () {
+    var smooth = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: smooth ? "smooth" : "auto" });
+  });
+
   /* ---------- Article topic filters ---------- */
   var grid = document.getElementById("article-grid");
   if (grid) {
@@ -191,7 +207,11 @@
   /* Partners logo ticker — infinite marquee */
   var partnerTrack = document.querySelector("[data-partners-track]");
   if (partnerTrack) {
-    partnerTrack.innerHTML += partnerTrack.innerHTML; // duplicate for seamless loop
+    var mqMobile = window.matchMedia("(max-width: 920px)");
+    var originalPartnerLogos = partnerTrack.innerHTML;
+    if (mqMobile.matches) return;
+
+    partnerTrack.innerHTML = originalPartnerLogos + originalPartnerLogos; // duplicate for seamless loop
     var trackHalfW = partnerTrack.scrollWidth / 2;
     var marquee = gsap.to(partnerTrack, {
       x: -trackHalfW,
@@ -202,5 +222,24 @@
     var belt = partnerTrack.parentElement;
     belt.addEventListener("mouseenter", function () { marquee.pause(); });
     belt.addEventListener("mouseleave", function () { marquee.resume(); });
+
+    /* On small screens the logos are a static wrapped grid (CSS). If the page
+       was loaded wide and then narrowed, the running tween would keep dragging
+       them off-screen — pause it and clear the transform so CSS takes over. */
+    var syncMarquee = function () {
+      if (mqMobile.matches) {
+        marquee.pause();
+        marquee.progress(0);
+        partnerTrack.innerHTML = originalPartnerLogos;
+        gsap.set(partnerTrack, { clearProps: "transform" });
+      } else {
+        if (partnerTrack.children.length <= originalPartnerLogos.match(/partners-item/g).length) {
+          partnerTrack.innerHTML = originalPartnerLogos + originalPartnerLogos;
+        }
+        marquee.resume();
+      }
+    };
+    syncMarquee();
+    mqMobile.addEventListener("change", syncMarquee);
   }
 })();

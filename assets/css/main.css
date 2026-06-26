@@ -140,7 +140,7 @@ ul { list-style: none; padding: 0; }
   /* hero fills the viewport while the floating header overlays it */
   .hero { min-height: 100svh; display: grid; align-items: stretch; }
   .hero-grid { align-items: end; }
-  .hero-copy { align-self: center; margin-top: calc(-1 * clamp(1rem, 3vh, 3rem)); }
+  .hero-copy { align-self: center; margin-top: clamp(2rem, 7vh, 5rem); }
   /* cancel the hero's bottom padding so the doctor's cropped torso sits flush on the hero edge */
   .hero-portrait { align-self: stretch; min-height: 0; margin-bottom: calc(-1 * clamp(3rem, 6vw, 6rem)); }
   /* size the doctor by height so he fills the hero tall, not capped narrow —
@@ -186,14 +186,6 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
 .lead { font-size: var(--fs-700); line-height: 1.3; color: var(--navy-700); font-weight: 400; max-width: 24ch; }
 
 .intro-grid { display: grid; gap: clamp(2.5rem, 6vw, 5rem); align-items: center; }
-
-/* small uppercase label */
-.eyebrow {
-  display: inline-flex; align-items: center; gap: .55em;
-  font-size: var(--fs-200); font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
-  color: var(--coral-600); margin-bottom: var(--sp-2);
-}
-.eyebrow::before { content: ""; width: 2.2em; height: 2px; background: currentColor; border-radius: 2px; }
 
 .intro-heading { font-size: var(--fs-900); line-height: var(--lh-snug); color: var(--navy-900); margin-bottom: var(--sp-3); max-width: 16ch; }
 .intro-body .lead { max-width: 46ch; color: var(--steel-500); font-size: var(--fs-500); line-height: var(--lh-body); }
@@ -399,7 +391,10 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
     justify-content: center;
     width: auto;
     gap: clamp(1rem, 3vw, 1.5rem);
+    transform: none !important;
+    will-change: auto;
   }
+  .partners-item { transform: none !important; }
   .partners-item img { width: clamp(70px, 20vw, 110px); }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -469,12 +464,22 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
 }
 .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1.3fr; gap: var(--sp-4); }
 .footer-brand {
-  display: inline-flex;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-3);
   justify-self: start;
   align-self: start;
 }
-.footer-brand img { height: 68px; width: auto; }
+.footer-brand img { height: 104px; width: auto; max-width: 100%; }
+.footer-social { display: flex; gap: var(--sp-2); }
+.footer-social a {
+  display: grid; place-items: center; width: 42px; height: 42px;
+  border-radius: 50%; background: var(--coral-100); color: var(--coral-600);
+  transition: background var(--t-fast), color var(--t-fast), transform var(--t-fast) var(--ease-out);
+}
+.footer-social a:hover { background: var(--coral-500); color: #fff; transform: translateY(-2px); }
+.footer-social svg { width: 20px; height: 20px; }
 .footer-col h4 { color: var(--navy-900); font-size: var(--fs-400); margin-bottom: var(--sp-2); }
 .footer-col p { font-size: var(--fs-300); margin-bottom: var(--sp-1); }
 .footer-col a:hover { color: var(--coral-500); }
@@ -566,14 +571,25 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
     box-shadow: 0 12px 30px rgba(42, 145, 173, .24);
   }
 
-  section { padding-block: clamp(2.75rem, 12vw, 4.5rem); }
+  section { padding-block: clamp(3.75rem, 14vw, 6rem); }
 
   .hero {
     min-height: auto;
-    padding-block: calc(var(--header-bar-height) + (var(--header-float-y) * 2) + 1.35rem) clamp(2.5rem, 12vw, 4rem);
+    /* no bottom padding: the doctor cutout sits flush on the hero's bottom edge
+       instead of floating above it */
+    padding-block: calc(var(--header-bar-height) + (var(--header-float-y) * 2) + 1.35rem) 0;
   }
-  .hero-grid { grid-template-columns: 1fr; text-align: center; }
+  .hero-grid { grid-template-columns: 1fr; gap: 0; text-align: center; }
   .hero-copy { margin-inline: auto; }
+  main > .hero + section {
+    margin-top: 0;
+  }
+  main > .hero + section ~ section {
+    margin-top: clamp(2rem, 10vw, 3.75rem);
+  }
+  main > .hero ~ section.cta {
+    margin-top: clamp(2.5rem, 12vw, 4.5rem);
+  }
   .hero-title {
     font-size: clamp(3rem, 17vw, 4.8rem);
     line-height: .96;
@@ -594,9 +610,15 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
     order: 2;
     min-height: 0;
     margin-top: clamp(1.25rem, 6vw, 2rem);
+    margin-bottom: 0;
+    line-height: 0;
   }
   .portrait-blob { width: min(70%, 280px); bottom: 3%; }
-  .portrait-doctor { width: min(84vw, 330px); }
+  .portrait-doctor {
+    display: block;
+    width: min(88vw, 360px);
+    transform: translateY(clamp(1.25rem, 6vw, 2rem));
+  }
   .circle-sun { width: clamp(82px, 23vw, 116px); top: 19%; right: -4%; }
   .circle-ring { width: clamp(54px, 16vw, 82px); border-width: 9px; bottom: 9%; left: 50%; }
 
@@ -604,11 +626,16 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
     margin-bottom: var(--sp-3);
   }
   .section-title {
-    font-size: clamp(2rem, 10vw, 3rem);
+    font-size: clamp(1.65rem, 7.2vw, 2.35rem);
+    line-height: 1.08;
   }
   .section-sub {
     font-size: 1.05rem;
     line-height: 1.5;
+  }
+  .page-hero h1 {
+    font-size: clamp(2.1rem, 9vw, 3rem);
+    line-height: 1.04;
   }
 
   .intro-grid {
@@ -629,7 +656,7 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
   }
   .intro-heading {
     max-width: 12ch;
-    font-size: clamp(2rem, 10vw, 3rem);
+    font-size: clamp(1.65rem, 7.2vw, 2.35rem);
   }
   .intro-body .lead {
     max-width: none;
@@ -684,6 +711,19 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
   }
 
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-brand img { height: clamp(118px, 18vw, 150px); }
+
+  /* card padding drops to sp-3 on mobile, so the article thumb's -sp-4 bleed
+     pokes past the rounded card edge — match the smaller padding */
+  .article-card { overflow: hidden; }
+  .article-thumb { margin: calc(-1 * var(--sp-3)) calc(-1 * var(--sp-3)) 0; max-width: calc(100% + (var(--sp-3) * 2)); }
+  .article-lead-img { max-width: 100%; }
+  /* hide oversized decorative background circles on mobile */
+  .intro::before,
+  .services::before,
+  .clinics::before,
+  .articles::before,
+  .reviews::before { display: none; }
 
   .nav-toggle {
     display: inline-flex; align-items: center; justify-content: center;
@@ -757,15 +797,17 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
     grid-template-columns: 1fr;
     align-content: center;
     text-align: center;
-    padding: clamp(3rem, 14vw, 4.5rem) var(--gutter);
+    padding: clamp(3rem, 13vw, 4.5rem) clamp(1.5rem, 7vw, 2.25rem);
   }
   .cta-copy {
     margin-inline: auto;
   }
   .cta-copy h2 {
-    font-size: clamp(2.4rem, 12vw, 4rem);
-    max-width: 11ch;
+    font-size: clamp(1.85rem, 8vw, 2.55rem);
+    max-width: 14ch;
+    line-height: 1.1;
     margin-inline: auto;
+    text-wrap: balance;
   }
   .cta-copy p {
     margin-inline: auto;
@@ -820,28 +862,9 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
   .hero-cta .btn {
     width: 100%;
   }
-  .intro-collage {
-    aspect-ratio: auto;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    padding-bottom: 2.25rem;
-  }
-  .cl {
-    aspect-ratio: 4 / 3;
-    border-radius: 26px;
-  }
-  .cl-doc {
-    grid-column: auto;
-    grid-row: auto;
-    aspect-ratio: 4 / 5;
-    border-radius: 30px;
-  }
-  .cl-play,
-  .cl-exam {
-    grid-column: auto;
-    grid-row: auto;
-    transform: none;
-  }
+  /* keep the 3-image collage as the puzzle layout on phones too (don't stack
+     it into one column) — only drop the decorative blob/ring for breathing room */
+  .cl { border-radius: 22px; }
   .intro-blob,
   .intro-ring {
     display: none;
@@ -874,6 +897,22 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
   }
   .footer-grid {
     grid-template-columns: 1fr;
+    row-gap: var(--sp-3);
+  }
+  .footer-brand {
+    align-items: center;
+    justify-self: center;
+    text-align: center;
+    gap: var(--sp-2);
+    margin-bottom: var(--sp-5);
+    width: 100%;
+  }
+  .footer-social { justify-content: center; }
+  .footer-brand img { height: clamp(68px, 18vw, 90px); }
+  .footer-col { text-align: center; }
+  .footer-bottom {
+    justify-items: center;
+    text-align: center;
   }
   .footer-bottom {
     display: grid;
@@ -1139,3 +1178,18 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
 @media (max-width: 920px) {
   .service-list { grid-template-columns: 1fr; }
 }
+
+/* ===== Back-to-top button (injected by main.js) ===== */
+.to-top {
+  position: fixed; right: clamp(1rem, 3vw, 2rem); bottom: clamp(1rem, 3vw, 2rem);
+  width: 48px; height: 48px; border-radius: 50%; border: none;
+  background: var(--coral-500); color: #fff; cursor: pointer;
+  display: grid; place-items: center; z-index: 90;
+  box-shadow: var(--shadow-pop);
+  opacity: 0; visibility: hidden; transform: translateY(12px);
+  transition: opacity var(--t-fast), visibility var(--t-fast),
+              transform var(--t-fast) var(--ease-out), background var(--t-fast);
+}
+.to-top.is-visible { opacity: 1; visibility: visible; transform: none; }
+.to-top:hover { background: var(--coral-600); transform: translateY(-3px); }
+.to-top svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
