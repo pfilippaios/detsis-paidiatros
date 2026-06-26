@@ -510,7 +510,8 @@ existing SEO ranking and inbound links. Article slugs are mostly kept (only the 
    - `paidiatros@detsis-paidiatros.gr`
 
 4. ~~Should contact forms exist?~~ **DECIDED: yes — appointment-request form is primary.**
-   Still open: which endpoint receives submissions (Netlify Forms / Formspree / `mailto:`)?
+   Still open: which endpoint receives submissions. Current build uses a `mailto:` compose
+   fallback (+ honeypot); swap to Netlify Forms / Formspree once a host is chosen.
 
 5. Should publications, media mentions, conferences, and collaborations live under `Ο Ιατρός`, or get separate pages?
 

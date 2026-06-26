@@ -23,19 +23,27 @@ this doc is the *look and motion* layer.
 
 ## Color
 
-From the reference design system (blues dominate; warm accent for action):
+Logo blue grounds the system; a wider playful spectrum (yellow, mint, **rose, lilac**)
+echoes the doctor's Facebook social-post grid (`ref1.jpeg`/`ref2.jpeg` — navy + mustard +
+pink + lavender + sky + sage). Hex are the actual token values in
+[assets/css/tokens.css](assets/css/tokens.css).
 
 | Token | Hex | Use |
 |---|---|---|
-| `--navy-900` | `#1E3A56` | footer, trust strip, deepest grounds |
-| `--navy-700` | `#2B4C6F` | primary brand, hero bg, headlines |
-| `--steel-500` | `#5B7B9A` | secondary text |
-| `--dusty-300` | `#A8C0D4` | curves, soft fills, tags |
-| `--mist-100` | `#EAF1F6` | alternating section tint |
-| `--coral-500` | `#E8836B` | **primary CTA + headline accent word** |
-| `--sun-400` | `#F4C95D` | secondary playful glow accents |
+| `--navy-900` | `#12324A` | footer, dark panels, deepest grounds |
+| `--navy-700` | `#1F5C7F` | primary logo blue, headlines |
+| `--steel-500` | `#5D8CA5` | secondary text/icons |
+| `--dusty-300` / `--sky-200` | `#9DCCDB` / `#D3EDEC` | curves, soft fills, tags |
+| `--mist-100` | `#EDF7F7` | alternating section tint |
+| `--coral-500` | `#2A91AD` | **primary CTA + headline accent word** (logo teal) |
+| `--sun-400` | `#F5C45A` | yellow glow accents |
+| `--mint-300` | `#A7D8C8` | green playful accents |
+| `--rose-500` | `#E0789F` | pink accents — service card, review mark, hero circle |
+| `--lilac-500` | `#8E78C9` | purple accents — article tag, review mark, section blob |
 
-Coral CTA = the persona-detstvo "warm button on cool ground" move; pops against the navy hero.
+Each accent hue ships a `-100` tint for card backgrounds / soft blobs. Accents rotate so no
+two adjacent service cards, article tags, or review marks repeat a colour — coral/teal stays
+the single CTA colour (the persona-detstvo "warm button on cool ground" move).
 
 ## Layout
 
@@ -80,4 +88,5 @@ Candidates for inner pages.
 - Enable Greek subset in Adobe Fonts kit (blocker for correct rendering).
 - Real clinic photos per location (currently `iatreio1` = Ζωγράφου, `iatreio10` = Βριλήσσια — guess; confirm with client, PLAN open Q6).
 - Newer/approved doctor portrait if available (PLAN open Q7).
-- Article slugs link to pages not built yet.
+- All interior pages + 22 articles built (ypiresies, clinics, arthra, FAQ, rantevou, epikoinonia, cookies). Generator: `scratchpad/build.py`.
+- Appointment form has no backend — `mailto:` fallback for now (PLAN open Q4).

@@ -19,6 +19,13 @@
   --sun-100: #FBEDCB;    /* yellow tint block */
   --mint-300: #A7D8C8;   /* playful green */
   --mint-100: #E2F1EB;   /* green tint block */
+  /* social-post hues (doctor's FB grid): rose + lilac round out the palette */
+  --rose-500: #E0789F;   /* pink accent */
+  --rose-300: #F2B6CA;   /* soft pink */
+  --rose-100: #FBE6EE;   /* pink tint block */
+  --lilac-500: #8E78C9;  /* purple accent */
+  --lilac-300: #C2B2E6;  /* soft lilac */
+  --lilac-100: #ECE6F9;  /* lilac tint block */
 
   /* Type — Apparat (Adobe Fonts kit aix4wav), full Greek support */
   --font-display: "apparat-light", "apparat", system-ui, sans-serif;

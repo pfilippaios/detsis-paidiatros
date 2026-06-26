@@ -49,6 +49,65 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  /* ---------- Article topic filters ---------- */
+  var grid = document.getElementById("article-grid");
+  if (grid) {
+    var filterBtns = Array.prototype.slice.call(document.querySelectorAll(".filter-btn"));
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var f = btn.getAttribute("data-filter");
+        filterBtns.forEach(function (b) { b.setAttribute("aria-pressed", String(b === btn)); });
+        grid.querySelectorAll(".article-card").forEach(function (card) {
+          var show = f === "all" || card.getAttribute("data-topic") === f;
+          card.classList.toggle("is-hidden", !show);
+        });
+      });
+    });
+  }
+
+  /* ---------- Click-to-load maps (privacy: no Google iframe until asked) ---------- */
+  document.querySelectorAll("[data-map]").forEach(function (box) {
+    var btn = box.querySelector(".map-load");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var iframe = document.createElement("iframe");
+      iframe.src = box.getAttribute("data-src");
+      iframe.title = "Χάρτης ιατρείου";
+      iframe.loading = "lazy";
+      iframe.setAttribute("allowfullscreen", "");
+      iframe.referrerPolicy = "no-referrer-when-downgrade";
+      box.innerHTML = "";
+      box.appendChild(iframe);
+    });
+  });
+
+  /* ---------- Appointment form: compose a tidy mailto (no backend chosen yet) ----------
+     ponytail: mailto compose — swap for Formspree/Netlify Forms when the host is decided.
+     No-JS fallback is the form's own action="mailto:" (text/plain). */
+  var apptForm = document.querySelector("[data-appointment]");
+  if (apptForm) {
+    apptForm.addEventListener("submit", function (e) {
+      var hp = apptForm.querySelector('input[name="website"]');
+      if (hp && hp.value) { e.preventDefault(); return; } // honeypot: drop bots
+      e.preventDefault();
+      var get = function (n) { var el = apptForm.querySelector('[name="' + n + '"]'); return el ? el.value : ""; };
+      var clinic = (apptForm.querySelector('input[name="Ιατρείο"]:checked') || {}).value || "";
+      var body = [
+        "Όνομα γονέα: " + get("Ονομα_γονέα"),
+        "Τηλέφωνο: " + get("Τηλέφωνο"),
+        "Email: " + get("Email"),
+        "Ιατρείο: " + clinic,
+        "Όνομα & ηλικία παιδιού: " + get("Παιδί"),
+        "Προτιμώμενη ημέρα: " + get("Προτιμώμενη_ημέρα"),
+        "",
+        get("Μήνυμα")
+      ].join("\n");
+      var subject = "Αίτημα ραντεβού" + (clinic ? " — " + clinic : "");
+      window.location.href = "mailto:grammateia@detsis-paidiatros.gr?subject=" +
+        encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    });
+  }
+
   /* ---------- Motion (bail out if reduced-motion or GSAP missing) ---------- */
   var revealPrepared = function () {
     document.querySelectorAll("[data-rise],[data-portrait]").forEach(function (el) { el.style.opacity = 1; });
