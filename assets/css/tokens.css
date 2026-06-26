@@ -1,0 +1,70 @@
+/* Design tokens — single source of truth. Derived from the Detsis logo and supporting clinic imagery. */
+:root {
+  /* Palette */
+  --navy-900: #12324A;   /* deepest — footer, dark panels */
+  --navy-700: #1F5C7F;   /* primary logo blue */
+  --steel-500: #5D8CA5;  /* mid blue — secondary text/icons */
+  --dusty-300: #9DCCDB;  /* logo light blue */
+  --sky-200: #D3EDEC;    /* pale logo tint block */
+  --mist-100: #EDF7F7;   /* page tint sections */
+  --cream: #F8FBF7;      /* clean off-white body */
+  --paper: #FFFFFF;
+  --ink: #1B2A38;        /* body text */
+
+  /* Logo-led accents */
+  --coral-500: #2A91AD;  /* primary CTA / accent */
+  --coral-600: #1D6F91;  /* CTA hover */
+  --coral-100: #DFF2F4;  /* soft accent tint */
+  --sun-400: #F5C45A;    /* yellow accent */
+  --sun-100: #FBEDCB;    /* yellow tint block */
+  --mint-300: #A7D8C8;   /* playful green */
+  --mint-100: #E2F1EB;   /* green tint block */
+
+  /* Type — Apparat (Adobe Fonts kit aix4wav), full Greek support */
+  --font-display: "apparat-light", "apparat", system-ui, sans-serif;
+  --font-sans: "apparat", system-ui, "Helvetica Neue", Arial, sans-serif;
+
+  /* Fluid type scale — bigger, more editorial */
+  --fs-hero: clamp(3.5rem, 1.6rem + 9.5vw, 10rem);
+  --fs-display: clamp(2.6rem, 1.4rem + 5.2vw, 5.5rem);
+  --fs-900: clamp(2.2rem, 1.3rem + 4vw, 4.25rem);
+  --fs-700: clamp(1.6rem, 1.1rem + 2vw, 2.6rem);
+  --fs-500: clamp(1.25rem, 1.05rem + 0.9vw, 1.6rem);
+  --fs-400: 1.125rem;
+  --fs-300: 1rem;
+  --fs-200: 0.85rem;
+
+  --lh-tight: 0.98;
+  --lh-snug: 1.18;
+  --lh-body: 1.65;
+
+  /* Spacing scale */
+  --sp-1: 0.5rem;
+  --sp-2: 1rem;
+  --sp-3: 1.5rem;
+  --sp-4: 2rem;
+  --sp-6: 3rem;
+  --sp-8: 4rem;
+  --sp-12: 6rem;
+  --sp-16: 8rem;
+
+  /* Layout */
+  --maxw: 1280px;
+  --maxw-text: 60ch;
+  --gutter: clamp(1.1rem, 0.4rem + 3vw, 2.5rem);
+
+  /* Round edges — generous */
+  --radius: 22px;
+  --radius-lg: 36px;
+  --radius-xl: 52px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 6px 22px rgba(24, 47, 71, 0.08);
+  --shadow-md: 0 22px 60px rgba(24, 47, 71, 0.16);
+  --shadow-pop: 0 18px 50px rgba(42, 145, 173, 0.28);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --t-fast: 0.2s;
+  --t-med: 0.4s;
+}

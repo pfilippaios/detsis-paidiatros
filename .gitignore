@@ -1,0 +1,6 @@
+.DS_Store
+test-results/
+scratchpad-*.png
+
+# ponytail: 132M httrack copy of old site — local content/image source, not a build deliverable
+site-mirror/
