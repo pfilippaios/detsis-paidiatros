@@ -3,7 +3,8 @@
 Rebuild of detsis-paidiatros.gr (Dr Marios Detsis, pediatrician) as a static HTML/CSS/JS site.
 See [PLAN.md](PLAN.md) for sitemap, content blueprint, article inventory, real clinic data.
 
-`site-mirror/` = full httrack copy of the old WordPress site (content + images source).
+`_ref/` (gitignored) = all reference / old-website / scratch material. Notably
+`_ref/site-mirror/` = full httrack copy of the old WordPress site (content + images source).
 
 ## Running Codex (gpt-5.5, high effort)
 

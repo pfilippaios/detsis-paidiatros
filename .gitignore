@@ -1,6 +1,4 @@
 .DS_Store
-test-results/
-scratchpad-*.png
 
-# ponytail: 132M httrack copy of old site — local content/image source, not a build deliverable
-site-mirror/
+# ponytail: all reference / old-website / scratch material lives here — never deployed
+_ref/
