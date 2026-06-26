@@ -1,4 +1,2 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://detsis-paidiatros.gr/sitemap.xml
