@@ -173,7 +173,7 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
 .intro::before    { background: var(--sky-200);   bottom: -20%; right: -12%; opacity: .4; }
 .services::before { background: var(--sun-400);    bottom: -22%; left: -12%; opacity: .25; }
 .clinics::before  { background: var(--mint-300);   top: -18%; right: -8%;  opacity: .4; }
-.articles::before { background: var(--lilac-300);  bottom: -20%; left: -10%; opacity: .45; }
+.articles::before { background: var(--lilac-300);  bottom: clamp(1.5rem, 4vw, 4rem); left: clamp(1rem, 4vw, 4rem); opacity: .45; }
 .reviews::before  { background: var(--rose-300);   top: -14%; right: -12%; opacity: .55; }
 .section-head { max-width: var(--maxw-text); margin-bottom: var(--sp-6); }
 .section-head.center { margin-inline: auto; text-align: center; }
