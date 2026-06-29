@@ -249,3 +249,7 @@
     mqMobile.addEventListener("change", syncMarquee);
   }
 })();
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
