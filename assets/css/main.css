@@ -455,9 +455,9 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
 .site-footer {
   background: transparent;
   color: var(--steel-500);
-  padding-block: clamp(3rem,5vw,5rem) var(--sp-4);
+  padding-block: clamp(2rem,3.5vw,3.5rem) var(--sp-4);
   border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-  margin-top: var(--sp-6);
+  margin-top: var(--sp-3);
 }
 .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1.3fr; gap: var(--sp-4); }
 .footer-brand {
@@ -645,7 +645,7 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
     display: block;
     width: auto;
     max-width: none; /* let height drive size; override the global img max-width:100% */
-    height: min(60svh, 540px);
+    height: min(52svh, 470px);
     transform: translateX(-4%); /* subject sits right-of-centre in the PNG — nudge to optical centre */
   }
   .circle-sun { width: clamp(82px, 23vw, 116px); top: 19%; right: -4%; }
@@ -950,11 +950,10 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
   .footer-brand img { height: clamp(68px, 18vw, 90px); }
   .footer-col { text-align: center; }
   .footer-bottom {
+    display: grid;
     justify-items: center;
     text-align: center;
-  }
-  .footer-bottom {
-    display: grid;
+    gap: var(--sp-1);
   }
 }
 
