@@ -576,7 +576,7 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
     min-height: 100svh;
     display: flex;
     flex-direction: column;
-    padding-block: calc(var(--header-bar-height) + (var(--header-float-y) * 2) + 2.75rem) 0;
+    padding-block: calc(var(--header-bar-height) + (var(--header-float-y) * 2) + 2rem) 0;
   }
   .hero-grid {
     grid-template-columns: 1fr;
@@ -645,7 +645,7 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
     display: block;
     width: auto;
     max-width: none; /* let height drive size; override the global img max-width:100% */
-    height: min(58svh, 520px);
+    height: min(50svh, 460px);
     transform: translateX(-4%); /* subject sits right-of-centre in the PNG — nudge to optical centre */
   }
   .circle-sun { width: clamp(82px, 23vw, 116px); top: 19%; right: -4%; }
