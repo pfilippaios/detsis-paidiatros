@@ -172,7 +172,7 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
 }
 .intro::before    { background: var(--sky-200);   bottom: -20%; right: -12%; opacity: .4; }
 .services::before { background: var(--sun-400);    bottom: -22%; left: -12%; opacity: .25; }
-.clinics::before  { background: var(--mint-300);   top: -18%; right: -8%;  opacity: .4; }
+.clinics::before  { background: var(--mint-300);   top: clamp(1.5rem, 4vw, 4rem); right: -8%;  opacity: .4; }
 .articles::before { background: var(--lilac-300);  bottom: clamp(1.5rem, 4vw, 4rem); left: clamp(1rem, 4vw, 4rem); opacity: .45; }
 .reviews::before  { background: var(--rose-300);   top: -14%; right: -12%; opacity: .55; }
 .section-head { max-width: var(--maxw-text); margin-bottom: var(--sp-6); }
@@ -950,7 +950,7 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
     justify-self: center;
     text-align: center;
     gap: var(--sp-2);
-    margin-bottom: var(--sp-5);
+    margin-bottom: var(--sp-4);
     width: 100%;
   }
   .footer-social { justify-content: center; }
@@ -1029,6 +1029,46 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
   * { transition: none !important; }
 }
 
+/* ===== Clinic photo gallery ===== */
+/* Clinic pages (client photos, 3-col with tall tiles). Must stay AFTER the
+   unscoped .clinic-gallery rules in the 580px and 921px media blocks above:
+   the doubled-class selectors win on specificity + order. */
+.clinic-gallery.clinic-gallery--photos { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1fr; grid-auto-flow: dense; }
+.clinic-gallery--photos > li { min-width: 0; }
+.clinic-gallery--photos figure { aspect-ratio: 3 / 2; }
+.clinic-gallery--photos > li.is-tall { grid-row: span 2; }
+.clinic-gallery--photos > li.is-tall figure { aspect-ratio: auto; height: 100%; }
+/* row height comes from the 3:2 landscape tiles (1fr = equal rows); tall tiles fill 2 rows */
+.clinic-gallery.clinic-gallery--photos img { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; }
+/* when the tile count leaves the last desktop row short, the last tile fills that row */
+@media (min-width: 921px) {
+  .clinic-gallery--wide-last > li:last-child { grid-column: 1 / -1; grid-row: span 2; }
+  .clinic-gallery--wide-last > li:last-child figure { aspect-ratio: auto; height: 100%; }
+}
+@media (max-width: 920px) {
+  .clinic-gallery.clinic-gallery--photos { grid-template-columns: repeat(2, 1fr); }
+  /* last tile spans the full width and 2 rows, so it stays roughly 3:2 */
+  .clinic-gallery.clinic-gallery--photos > li:last-child { grid-column: span 2; grid-row: span 2; }
+  .clinic-gallery--photos > li:last-child figure { aspect-ratio: auto; height: 100%; }
+}
+
+/* ===== Ο Ιατρός page ===== */
+/* portrait + bio layout (o-iatros) */
+.doctor-bio-grid { display: grid; gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+.doctor-portrait { margin: 0; width: min(400px, 100%); justify-self: center; }
+.doctor-portrait img,
+.doctor-photo-secondary img {
+  display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover;
+  border-radius: var(--radius-xl); box-shadow: var(--shadow-md);
+}
+.doctor-bio-body .section-title { font-size: var(--fs-700); line-height: var(--lh-snug); margin-bottom: var(--sp-3); max-width: 22ch; }
+.doctor-bio-body .bio-prose + .section-title { margin-top: var(--sp-6); }
+.doctor-photo-secondary { margin: 0; width: min(380px, 100%); justify-self: center; }
+@media (min-width: 920px) {
+  .doctor-bio-grid { grid-template-columns: minmax(280px, 400px) minmax(0, 1fr); }
+  .doctor-portrait { position: sticky; top: 7rem; }
+}
+
 /* ===== Inner page hero (Ο Ιατρός & other interior pages) =====
    Reuses the homepage hero gradient but compact; top padding clears the
    fixed floating header. */
@@ -1082,7 +1122,7 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
 
 /* ===== Breadcrumbs (inner pages) ===== */
 .crumbs { margin-bottom: var(--sp-3); }
-.crumbs ol { display: flex; flex-wrap: wrap; align-items: center; gap: .45em; font-size: var(--fs-200); color: var(--steel-500); font-weight: 600; }
+.crumbs ol { list-style: none; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: .45em; font-size: var(--fs-200); color: var(--steel-500); font-weight: 600; }
 .crumbs a { color: var(--steel-500); }
 .crumbs a:hover { color: var(--coral-600); }
 .crumbs li[aria-current] { color: var(--navy-700); }
@@ -1091,26 +1131,28 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
 /* ===== Inline icons ===== */
 .icn { width: 1.2em; height: 1.2em; flex: none; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
-/* ===== Service detail cards (Υπηρεσίες hub) ===== */
-.service-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-3); }
-.svc {
-  background: var(--paper); border-radius: var(--radius-lg); padding: var(--sp-4);
-  box-shadow: var(--shadow-sm); border-top: 5px solid var(--coral-500);
-  display: flex; flex-direction: column; gap: var(--sp-2);
-  transition: transform var(--t-med) var(--ease-back), box-shadow var(--t-med);
+/* ===== Υπηρεσίες intro: prose + full-height photo ===== */
+.care-split { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: stretch; }
+.care-split .bio-prose { max-width: none; align-self: center; }
+.care-photo { margin: 0; position: relative; min-height: 420px; border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-md); }
+.care-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 920px) {
+  .care-split { grid-template-columns: 1fr; }
+  .care-photo { min-height: 0; aspect-ratio: 4 / 3; }
 }
-.svc:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
-.svc:nth-child(6n+1) { border-top-color: var(--coral-500); }
-.svc:nth-child(6n+2) { border-top-color: var(--sun-400); }
-.svc:nth-child(6n+3) { border-top-color: var(--mint-300); }
-.svc:nth-child(6n+4) { border-top-color: var(--rose-500); }
-.svc:nth-child(6n+5) { border-top-color: var(--lilac-500); }
-.svc:nth-child(6n+6) { border-top-color: var(--steel-500); }
-.svc h3 { font-size: var(--fs-500); color: var(--navy-700); }
-.svc p { color: var(--ink); opacity: .82; line-height: var(--lh-body); }
-.svc .svc-when { margin-top: auto; font-size: var(--fs-300); color: var(--steel-500); padding-top: var(--sp-2); border-top: 1px solid rgba(31,92,127,.12); }
-.svc .svc-when strong { color: var(--coral-600); }
 
+/* ===== Service detail cards (Υπηρεσίες hub) — homepage service-card look ===== */
+.service-grid { grid-template-columns: repeat(2, 1fr); gap: var(--sp-4); }
+.service-grid .service-card { padding: var(--sp-4) var(--sp-4) var(--sp-3); }
+.service-grid .service-thumb { width: 88px; height: 88px; }
+.service-grid .service-card p { line-height: var(--lh-body); }
+.service-grid .svc-when { margin-top: auto; padding-top: var(--sp-2); border-top: 1px solid rgba(31,92,127,.14); font-size: var(--fs-200); opacity: 1; color: var(--steel-500); }
+.service-grid .svc-when strong { color: var(--coral-600); }
+@media (max-width: 580px) {
+  .service-grid { grid-template-columns: 1fr; }
+  .service-grid .service-card { padding: var(--sp-3); }
+  .service-grid .service-thumb { width: 72px; height: 72px; }
+}
 /* ===== Info rows (clinic / contact details) ===== */
 .info-card { background: var(--paper); border-radius: var(--radius-lg); padding: var(--sp-4); box-shadow: var(--shadow-sm); }
 .info-card h3 { font-size: var(--fs-700); color: var(--navy-700); margin-bottom: var(--sp-2); }
@@ -1138,7 +1180,7 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
 .map-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
 
 /* ===== Article index: filters + meta cards ===== */
-.filters { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: var(--sp-5); }
+.filters { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: var(--sp-4); }
 .filter-btn {
   border: 2px solid var(--dusty-300); background: var(--paper); color: var(--navy-700);
   padding: .5em 1.15em; border-radius: var(--radius-pill); font-weight: 700; font-size: var(--fs-300);
@@ -1164,7 +1206,7 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
 .article-meta-line { display: flex; flex-wrap: wrap; gap: var(--sp-2); align-items: center; margin-top: var(--sp-3); color: var(--steel-500); font-weight: 600; font-size: var(--fs-300); }
 .article-section { background: var(--paper); }
 .article-wrap { max-width: 72ch; margin-inline: auto; }
-.article-lead-img { border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin-bottom: var(--sp-5); width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.article-lead-img { border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin-bottom: var(--sp-4); width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
 .article-body { font-size: var(--fs-400); color: var(--ink); line-height: var(--lh-body); }
 .article-body > * + * { margin-top: var(--sp-3); }
 .article-body h2 { font-size: var(--fs-700); color: var(--navy-700); margin-top: var(--sp-6); }
@@ -1217,11 +1259,7 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
 .form-aside h3 { font-size: var(--fs-500); color: var(--navy-700); margin-bottom: var(--sp-2); }
 
 @media (max-width: 640px) {
-  .service-list { grid-template-columns: 1fr; }
   .form-grid-2 { grid-template-columns: 1fr; }
-}
-@media (max-width: 920px) {
-  .service-list { grid-template-columns: 1fr; }
 }
 
 /* ===== Back-to-top button (injected by main.js) ===== */
@@ -1238,3 +1276,20 @@ section { padding-block: clamp(3.5rem, 7vw, 7rem); position: relative; }
 .to-top.is-visible { opacity: 1; visibility: visible; transform: none; }
 .to-top:hover { background: var(--coral-600); transform: translateY(-3px); }
 .to-top svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ===== Ιατρεία hub page — photo card + details per clinic ===== */
+.loc-grid { align-items: start; }
+.loc-col { display: flex; flex-direction: column; gap: var(--sp-3); }
+.loc-col .clinic-card { min-height: clamp(240px, 32vh, 360px); }
+.loc-col .clinic-body h2 { color: #fff; font-size: var(--fs-700); }
+.loc-col .clinic-body .link-arrow { display: inline-block; }
+/* the homepage squeezes the gallery to a short strip; the hub page has room */
+.clinic-gallery.loc-gallery img { aspect-ratio: 3 / 2; height: auto; }
+
+/* whole article card is clickable: the title link's ::after covers the card */
+.article-card { position: relative; cursor: pointer; }
+.article-card h3 a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: 1; }
+.article-card:hover h3 a { color: var(--coral-600); }
+.article-card h3 a:focus-visible { outline: none; }
+.article-card:has(h3 a:focus-visible) { outline: 3px solid var(--coral-500); outline-offset: 3px; }
+.filter-btn { font-family: inherit; }
