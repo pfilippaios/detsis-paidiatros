@@ -19,78 +19,98 @@ import CtaBand from '../../components/CtaBand.astro';
   <section class="bio">
     <div class="wrap">
       <div class="faq-list">
-        <h2 class="faq-group-title">Θηλασμός</h2>
-        <details class="faq-item">
-          <summary>Πρέπει να το ξυπνάω για να φάει;</summary>
-          <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
-        </details>
-        <details class="faq-item">
-          <summary>Πόσο γάλα πρέπει να πίνει;</summary>
-          <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
-        </details>
-        <details class="faq-item">
-          <summary>Πώς ξέρω ότι χορταίνει;</summary>
-          <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
-        </details>
-        <h2 class="faq-group-title">Ύπνος</h2>
-        <details class="faq-item">
-          <summary>Πόση ώρα πρέπει να κοιμάται;</summary>
-          <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
-        </details>
-        <details class="faq-item">
-          <summary>Κάθε μία ώρα ξυπνάει, τι να κάνω;</summary>
-          <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
-        </details>
-        <details class="faq-item">
-          <summary>Να το βάλω μπρούμυτα;</summary>
-          <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
-        </details>
-        <details class="faq-item">
-          <summary>Να κοιμηθεί μαζί μας στο κρεβάτι;</summary>
-          <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
-        </details>
-        <details class="faq-item">
-          <summary>Πρέπει να έχει πρόγραμμα ύπνου;</summary>
-          <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
-        </details>
-        <h2 class="faq-group-title">Άλλα θέματα του νεογνού</h2>
-        <details class="faq-item">
-          <summary>Φτερνίζεται συχνά. Είναι κρυωμένο;</summary>
-          <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
-        </details>
-        <details class="faq-item">
-          <summary>Πώς περνάει ο λόξιγκας;</summary>
-          <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
-        </details>
-        <h2 class="faq-group-title">Μεγαλύτερα βρέφη</h2>
-        <details class="faq-item">
-          <summary>Ποια είναι η καλύτερη formula για το μωρό μου;</summary>
-          <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
-        </details>
-        <details class="faq-item">
-          <summary>Να δώσω νερό / χαμομήλι πριν τους 6 μήνες;</summary>
-          <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
-        </details>
-        <details class="faq-item">
-          <summary>Πότε θα ξεκινήσει τις στερεές τροφές;</summary>
-          <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
-        </details>
-        <details class="faq-item">
-          <summary>Μέχρι πότε να θηλάσω;</summary>
-          <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
-        </details>
-        <details class="faq-item">
-          <summary>Το παιδί μου δεν τρώει.</summary>
-          <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
-        </details>
-        <details class="faq-item">
-          <summary>Με τι θερμόμετρο να μετρήσω και πώς;</summary>
-          <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
-        </details>
-        <details class="faq-item">
-          <summary>Πότε δίνω αντιπυρετικό και πόσο;</summary>
-          <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
-        </details>
+        <section class="faq-group" aria-labelledby="faq-g1">
+          <div class="faq-group-head">
+            <h2 class="faq-group-title" id="faq-g1">Θηλασμός</h2>
+            <span class="faq-count">3 ερωτήσεις</span>
+          </div>
+          <details class="faq-item">
+            <summary>Πρέπει να το ξυπνάω για να φάει;</summary>
+            <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Πόσο γάλα πρέπει να πίνει;</summary>
+            <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Πώς ξέρω ότι χορταίνει;</summary>
+            <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
+          </details>
+        </section>
+        <section class="faq-group" aria-labelledby="faq-g2">
+          <div class="faq-group-head">
+            <h2 class="faq-group-title" id="faq-g2">Ύπνος</h2>
+            <span class="faq-count">5 ερωτήσεις</span>
+          </div>
+          <details class="faq-item">
+            <summary>Πόση ώρα πρέπει να κοιμάται;</summary>
+            <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Κάθε μία ώρα ξυπνάει, τι να κάνω;</summary>
+            <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Να το βάλω μπρούμυτα;</summary>
+            <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Να κοιμηθεί μαζί μας στο κρεβάτι;</summary>
+            <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Πρέπει να έχει πρόγραμμα ύπνου;</summary>
+            <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
+          </details>
+        </section>
+        <section class="faq-group" aria-labelledby="faq-g3">
+          <div class="faq-group-head">
+            <h2 class="faq-group-title" id="faq-g3">Άλλα θέματα του νεογνού</h2>
+            <span class="faq-count">2 ερωτήσεις</span>
+          </div>
+          <details class="faq-item">
+            <summary>Φτερνίζεται συχνά. Είναι κρυωμένο;</summary>
+            <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Πώς περνάει ο λόξιγκας;</summary>
+            <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
+          </details>
+        </section>
+        <section class="faq-group" aria-labelledby="faq-g4">
+          <div class="faq-group-head">
+            <h2 class="faq-group-title" id="faq-g4">Μεγαλύτερα βρέφη</h2>
+            <span class="faq-count">7 ερωτήσεις</span>
+          </div>
+          <details class="faq-item">
+            <summary>Ποια είναι η καλύτερη formula για το μωρό μου;</summary>
+            <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Να δώσω νερό / χαμομήλι πριν τους 6 μήνες;</summary>
+            <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Πότε θα ξεκινήσει τις στερεές τροφές;</summary>
+            <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Μέχρι πότε να θηλάσω;</summary>
+            <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Το παιδί μου δεν τρώει.</summary>
+            <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Με τι θερμόμετρο να μετρήσω και πώς;</summary>
+            <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Πότε δίνω αντιπυρετικό και πόσο;</summary>
+            <div class="faq-answer"><p class="faq-pending">Η απάντηση θα προστεθεί σύντομα.</p></div>
+          </details>
+        </section>
       </div>
     </div>
   </section>

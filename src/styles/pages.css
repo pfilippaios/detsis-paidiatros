@@ -94,7 +94,7 @@
 .article-body ol li { list-style: decimal; }
 .article-body strong { color: var(--navy-900); }
 .article-body em { font-style: italic; }
-.article-body a { color: var(--coral-600); border-bottom: 2px solid var(--coral-100); }
+.article-body a { color: var(--coral-600); border-bottom: 2px solid var(--coral-100); overflow-wrap: anywhere; } /* anywhere: long bare URLs in migrated articles */
 .article-body a:hover { border-color: var(--coral-500); }
 .article-body blockquote { border-left: 4px solid var(--coral-500); padding-left: var(--sp-3); color: var(--steel-500); font-style: italic; }
 .article-body img { border-radius: var(--radius); margin-block: var(--sp-3); }
