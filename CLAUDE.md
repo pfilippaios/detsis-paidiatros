@@ -28,6 +28,9 @@ What it fixes:
 - **Ραντεβού & Επικοινωνία:** same contact details as the old site's `/epikoinonia/`, except the
   phone rule above. The old 694 444 2947 number is not used.
 
+**Photos:** `PHOTO_MAP.md` maps every client photo (`photos-client/ΒΡΙΛΗΣΣΙΑ`, `ΖΩΓΡΑΦΟΥ`, `ΜΑΡΙΟΣ ΔΕΤΣΗΣ`)
+to its site image and the pages that use it. A clinic photo must come from that clinic's folder.
+
 Never write new copy, stats or facts that are not in the doc or on the old site. Missing content → ask.
 URLs are unchanged from the earlier static build.
 
