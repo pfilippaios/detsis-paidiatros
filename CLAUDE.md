@@ -33,12 +33,14 @@ to its site image and the pages that use it. A clinic photo must come from that 
 
 Never write new copy, stats or facts that are not in the doc or on the old site. Missing content → ask.
 URLs are unchanged from the earlier static build.
+Old WordPress URLs (articles at the root, renamed pages) redirect via `redirects` in `astro.config.mjs`.
+Default share image: `public/assets/img/og/og-default.jpg` (render of the homepage hero, no buttons); articles use their own image.
 
 ## Commands
 
 ```bash
 npm run dev       # dev server, http://localhost:4321
-npm run build     # static build into dist/ (34 pages)
+npm run build     # static build into dist/ (34 pages + 404 + 28 old-URL redirects)
 npm run preview   # serve dist/ on http://localhost:4322
 ```
 

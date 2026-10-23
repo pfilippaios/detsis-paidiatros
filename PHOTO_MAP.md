@@ -79,11 +79,13 @@ The mapping below was checked by pixel comparison of every site image against ev
 
 ## Not from the client set
 
-These come from the old website. Do **not** use them as clinic photos.
+These come from the old website or from stock. Do **not** use them as clinic photos.
 
-- `public/assets/img/home/web/clinic-*.jpg` and `public/assets/img/home/clinic-*.jpg` — old shoot of the
-  Zografou clinic. No longer referenced by any page.
-- `public/assets/img/clinics/iatreio*.jpg` — old photos, not referenced by any page.
 - `public/assets/img/home/web/detsis-doctor-760.png` — homepage hero cut-out of the doctor (old site).
 - `public/assets/img/home/web/doctor-conference-*.jpg` — conference photos on `/epistimoniko-ergo/`.
 - `public/assets/img/home/web/article-*.jpg` — stock photos for article cards and service cards 02–05.
+- `public/assets/img/og/og-default.jpg` — default share image (og:image), a 1200×630 render of the
+  homepage hero without the buttons.
+
+The old-site clinic photos and other unused originals were removed from `public/`. Copies are in
+`_ref/removed-public-assets/` (gitignored) and in git history.
