@@ -1,8 +1,8 @@
 # Design Decisions — detsis-paidiatros.gr
 
 Visual design system for the rebuild. Derived from the client's reference images
-(logo cards + social posts) and two inspiration sites. IA comes from [PLAN.md](PLAN.md);
-this doc is the *look and motion* layer.
+(logo cards + social posts) and two inspiration sites. Content and page structure come from the client sitemap doc
+(see CLAUDE.md); this doc is the *look and motion* layer.
 
 ## Inspiration → what we borrowed
 
@@ -89,7 +89,7 @@ Candidates for inner pages.
 
 ## Open / TODO
 - Enable Greek subset in Adobe Fonts kit (blocker for correct rendering).
-- Real clinic photos per location (currently `iatreio1` = Ζωγράφου, `iatreio10` = Βριλήσσια — guess; confirm with client, PLAN open Q6).
-- Newer/approved doctor portrait if available (PLAN open Q7).
+- Real clinic photos per location (currently `iatreio1` = Ζωγράφου, `iatreio10` = Βριλήσσια — confirm with client).
+- Newer/approved doctor portrait if available.
 - All interior pages + 22 articles built (ypiresies, clinics, arthra, FAQ, rantevou, epikoinonia, cookies). Now Astro pages; articles are Markdown in `src/content/articles/`.
-- Appointment form has no backend — `mailto:` fallback for now (PLAN open Q4).
+- Appointment form has no backend — `mailto:` fallback for now.

@@ -1,9 +1,35 @@
 # detsis-paidiatros
 
 Rebuild of detsis-paidiatros.gr (Dr Marios Detsis, pediatrician) as a static site built with
-Astro (output is plain HTML/CSS/JS in `dist/`, no server). See [PLAN.md](PLAN.md) for sitemap,
-content blueprint, article inventory, real clinic data — note PLAN's "no framework/bundler"
-rule is superseded by the Astro move; URLs are unchanged.
+Astro (output is plain HTML/CSS/JS in `dist/`, no server).
+
+## Source of truth: the client sitemap doc
+
+`photos-client/Marios Detsis Sitemap (2).docx` is the **source of truth and the latest info**.
+It overrides the old website, `_ref/`, and anything older. Read it with
+`textutil -convert txt -stdout "photos-client/Marios Detsis Sitemap (2).docx"`.
+
+What it fixes:
+
+- **Menu:** Αρχική · Ο Ιατρός · Υπηρεσίες · Τα Ιατρεία (Βριλησσίων & Ζωγράφου) · Άρθρα ·
+  Συχνές Ερωτήσεις · Ραντεβού & Επικοινωνία.
+- **Ο Ιατρός:** the new bio text, verbatim, in four parts (Βιογραφικό, Εκπαίδευση & Επιστημονική
+  Κατάρτιση, Επαγγελματική & Ερευνητική Εμπειρία, Επιστημονικές Εργασίες / Δημοσιεύσεις).
+  Μέλος / Συνεργασίες sits under the bio, not as a separate subpage. Drop "Δημοσιεύσεις για εμάς"
+  and "Παρουσία σε συνέδρια".
+- **Publications:** same list as the old site (`/epistimonikes-ergasies-dimosieuseis/`), shown at
+  `/epistimoniko-ergo/`.
+- **Υπηρεσίες:** the client's four paragraphs, verbatim.
+- **Τα Ιατρεία:** Βριλήσσια, Γράμμου 23 and Ζωγράφου, Ευδήλου 9–11. Phone **210 300 7410 for both**;
+  hours "κατόπιν ραντεβού". New clinic photos come from `photos-client/`.
+- **Άρθρα:** the same 22 articles as the old site, no new ones.
+- **Συχνές Ερωτήσεις:** the client's 17 questions in 4 groups (Θηλασμός, Ύπνος, Άλλα θέματα του
+  νεογνού, Μεγαλύτερα βρέφη). No answers yet — show a placeholder.
+- **Ραντεβού & Επικοινωνία:** same contact details as the old site's `/epikoinonia/`, except the
+  phone rule above. The old 694 444 2947 number is not used.
+
+Never write new copy, stats or facts that are not in the doc or on the old site. Missing content → ask.
+URLs are unchanged from the earlier static build.
 
 ## Commands
 
