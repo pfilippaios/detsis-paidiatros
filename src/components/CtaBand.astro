@@ -1,0 +1,29 @@
+---
+import { clinics, emails } from '../data/site';
+
+interface Props {
+  title: string;
+  text: string;
+}
+const { title, text } = Astro.props;
+---
+<section class="cta">
+  <div class="cta-band contained" data-cta>
+    <div class="wrap cta-inner">
+      <div class="cta-copy">
+        <h2 data-rise>{title}</h2>
+        <p data-rise>{text}</p>
+        <a class="btn btn-accent btn-lg" href="/rantevou/" data-rise>Φόρμα ραντεβού</a>
+      </div>
+      <div class="cta-contact" data-rise>
+        <h3>Τηλέφωνα ιατρείων</h3>
+        <ul>
+          {clinics.map((clinic) => (
+            <li><span>{clinic.short}</span><a href="tel:+302103007410">210 300 7410</a></li>
+          ))}
+        </ul>
+        <a class="cta-mail" href={`mailto:${emails.office}`}>{emails.office}</a>
+      </div>
+    </div>
+  </div>
+</section>

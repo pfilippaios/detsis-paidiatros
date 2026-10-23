@@ -1,7 +1,35 @@
 # detsis-paidiatros
 
-Rebuild of detsis-paidiatros.gr (Dr Marios Detsis, pediatrician) as a static HTML/CSS/JS site.
-See [PLAN.md](PLAN.md) for sitemap, content blueprint, article inventory, real clinic data.
+Rebuild of detsis-paidiatros.gr (Dr Marios Detsis, pediatrician) as a static site built with
+Astro (output is plain HTML/CSS/JS in `dist/`, no server). See [PLAN.md](PLAN.md) for sitemap,
+content blueprint, article inventory, real clinic data — note PLAN's "no framework/bundler"
+rule is superseded by the Astro move; URLs are unchanged.
+
+## Commands
+
+```bash
+npm run dev       # dev server, http://localhost:4321
+npm run build     # static build into dist/ (34 pages)
+npm run preview   # serve dist/ on http://localhost:4322
+```
+
+`.claude/launch.json` has `dev` and `preview` configs for the browser pane.
+
+## Structure
+
+- `src/layouts/BaseLayout.astro` — `<head>`, meta/OG/JSON-LD props, CSS imports, bundles `src/scripts/main.js`.
+- `src/components/` — `SiteHeader`, `SiteFooter`, `CtaBand` (shared by every page).
+- `src/data/site.ts` (clinics, phones, emails), `src/data/topics.ts` (article topic → tag class, Greek date format).
+- `src/pages/**/index.astro` — one file per page; URLs keep the trailing slash (`trailingSlash: 'always'`).
+- **Articles are Markdown** in `src/content/articles/<slug>.md` (schema in `src/content.config.ts`),
+  rendered by `src/pages/arthra/[slug].astro`. The `/arthra/` index builds cards + topic filters from
+  the collection — add an article by adding one `.md` file.
+- `src/styles/` — `tokens.css`, `base.css`, `layout.css`, `components.css`, `sections.css`, `pages.css`,
+  imported in that order by BaseLayout. Order matters for the cascade.
+- `src/scripts/main.js` — ES module: menu, filters, click-to-load maps, appointment mailto, motion.
+  GSAP comes from npm (`gsap`) and is **dynamically imported only on desktop (>920px) with motion
+  allowed**; mobile / reduced-motion never download it.
+- `public/` — images (`public/assets/img/…`), `robots.txt`, `sitemap.xml`; served at the same URLs as before.
 
 `_ref/` (gitignored) = all reference / old-website / scratch material. Notably
 `_ref/site-mirror/` = full httrack copy of the old WordPress site (content + images source).

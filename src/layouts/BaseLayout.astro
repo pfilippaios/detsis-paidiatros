@@ -1,0 +1,54 @@
+---
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/layout.css';
+import '../styles/components.css';
+import '../styles/sections.css';
+import '../styles/pages.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  /** og:description, when it should differ from the meta description */
+  ogDescription?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  /** href of the top-level menu item to highlight */
+  nav?: string;
+  jsonLd?: object[];
+}
+
+const { title, description, ogDescription = description, ogImage, ogType = 'website', nav, jsonLd = [] } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title}</title>
+<meta name="description" content={description}>
+<link rel="canonical" href={canonical}>
+<link rel="icon" href="/assets/img/brand/favicon.png">
+<meta property="og:title" content={title}>
+<meta property="og:description" content={ogDescription}>
+<meta property="og:type" content={ogType}>
+<meta property="og:locale" content="el_GR">
+{ogImage && <meta property="og:image" content={ogImage}>}
+<link rel="stylesheet" href="https://use.typekit.net/aix4wav.css">
+{jsonLd.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
+</head>
+<body>
+<a class="skip-link" href="#main">Μετάβαση στο περιεχόμενο</a>
+<SiteHeader current={nav} />
+<main id="main">
+  <slot />
+</main>
+<SiteFooter />
+<script>
+  import '../scripts/main.js';
+</script>
+</body>
+</html>

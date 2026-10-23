@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+---
+<BaseLayout
+  title={"Ο Ιατρός | Μάριος Δέτσης"}
+  description={"Ο Μάριος Δέτσης είναι παιδίατρος με ιατρεία στου Ζωγράφου και στα Βριλήσσια. Βιογραφικό, εκπαίδευση, επαγγελματική και ερευνητική εμπειρία, δημοσιεύσεις και συνεργασίες."}
+  ogDescription={"Παιδίατρος με ιατρεία στου Ζωγράφου και στα Βριλήσσια. Μεταπτυχιακοί τίτλοι στη Δημόσια Υγεία και στη Βιοστατιστική."}
+  ogImage={"https://detsis-paidiatros.gr/assets/img/doctor/new/doctor-portrait-900.webp"}
+  ogType={"profile"}
+  nav={"/o-iatros/"}
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "Physician",
+      "name": "Μάριος Δέτσης",
+      "medicalSpecialty": "Pediatric",
+      "url": "https://detsis-paidiatros.gr/o-iatros/",
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Ιατρική Σχολή ΕΚΠΑ"
+        }
+      ],
+      "image": "https://detsis-paidiatros.gr/assets/img/doctor/new/doctor-portrait-900.webp",
+      "telephone": "+302103007410"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Αρχική",
+          "item": "https://detsis-paidiatros.gr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Ο Ιατρός",
+          "item": "https://detsis-paidiatros.gr/o-iatros/"
+        }
+      ]
+    }
+  ]}
+>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="wrap">
+      <h1>Ο Ιατρός</h1>
+      <p class="page-hero-sub"><strong>Μάριος Δέτσης</strong> — Παιδίατρος</p>
+      <div class="hero-cta">
+        <a class="btn btn-accent btn-lg" href="/rantevou/">Κλείστε Ραντεβού</a>
+        <a class="btn btn-ghost btn-lg" href="tel:+302103007410">Καλέστε τώρα</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIOGRAPHY — tall portrait + client bio text -->
+  <section class="bio doctor-bio" aria-labelledby="biografiko">
+    <div class="wrap doctor-bio-grid">
+      <figure class="doctor-portrait">
+        <img src="/assets/img/doctor/new/doctor-portrait-900.webp"
+             srcset="/assets/img/doctor/new/doctor-portrait-450.webp 450w, /assets/img/doctor/new/doctor-portrait-900.webp 900w"
+             sizes="(min-width: 920px) 400px, 90vw"
+             alt="Ο Μάριος Δέτσης με μπλε σακάκι και λευκό πουκάμισο, με σταυρωμένα χέρια, μπροστά σε γαλαζοπράσινο τοίχο"
+             width="900" height="1200" fetchpriority="high" decoding="async">
+      </figure>
+
+      <div class="doctor-bio-body">
+        <h2 id="biografiko" class="section-title" data-rise>Βιογραφικό</h2>
+        <div class="bio-prose" data-rise>
+          <p>Ο Μάριος Δέτσης είναι παιδίατρος με ιδιωτικά ιατρεία στου Ζωγράφου και στα Βριλήσσια, όπου παρακολουθεί νεογνά, βρέφη, παιδιά και εφήβους. Στο επίκεντρο της φροντίδας του βρίσκονται η πρόληψη, η παρακολούθηση της ανάπτυξης και η ουσιαστική επικοινωνία με τους γονείς, ώστε κάθε οικογένεια να κατανοεί τις ανάγκες του παιδιού της και τις επιλογές που αφορούν την υγεία του.</p>
+          <p>Από τον Ιανουάριο του 2026 εργάζεται στον βρεφοθάλαμο του ΜΗΤΕΡΑ, με αντικείμενο την καθημερινή φροντίδα των νεογνών, την αξιολόγησή τους πριν από την έξοδο από το μαιευτήριο και τη συμβουλευτική των οικογενειών κατά τις πρώτες ημέρες της ζωής.</p>
+        </div>
+
+        <h2 id="ekpaidefsi" class="section-title" data-rise>Εκπαίδευση &amp; Επιστημονική Κατάρτιση</h2>
+        <div class="bio-prose" data-rise>
+          <p>Είναι απόφοιτος της Ιατρικής Σχολής του Εθνικού και Καποδιστριακού Πανεπιστημίου Αθηνών και ολοκλήρωσε την ειδίκευσή του στην Παιδιατρική στο Νοσοκομείο Παίδων «Η Αγία Σοφία».</p>
+          <p>Στο πλαίσιο της ειδικότητάς του, πραγματοποίησε εξάμηνη εκπαίδευση στη Νεογνολογία στο Μαιευτήριο «Έλενα Βενιζέλου», αποκτώντας εμπειρία στη φροντίδα των νεογνών και στην υποστήριξη του μητρικού θηλασμού. Έχει επίσης παρακολουθήσει σχετικά μετεκπαιδευτικά σεμινάρια, ενισχύοντας τις γνώσεις του στην καθοδήγηση των μητέρων κατά την έναρξη και τη συνέχιση του θηλασμού.</p>
+          <p>Διαθέτει δύο μεταπτυχιακούς τίτλους, στη Δημόσια Υγεία και στη Βιοστατιστική, και είναι υποψήφιος διδάκτορας Επιδημιολογίας του Πανεπιστημίου Αθηνών. Έχει επίσης πραγματοποιήσει ερευνητική μετεκπαίδευση στις λοιμώξεις στο Brown University των ΗΠΑ.</p>
+        </div>
+
+        <h2 id="empeiria" class="section-title" data-rise>Επαγγελματική &amp; Ερευνητική Εμπειρία</h2>
+        <div class="bio-prose" data-rise>
+          <p>Η επαγγελματική και επιστημονική του διαδρομή περιλαμβάνει ιδιαίτερη ενασχόληση με τις λοιμώξεις, τους εμβολιασμούς και την προστασία της υγείας από τις πρώτες ημέρες της ζωής.</p>
+          <p>Εργάστηκε στο ΚΕΕΛΠΝΟ την περίοδο 2009–2012, αναλαμβάνοντας και καθήκοντα υπευθύνου του Γραφείου Νοσημάτων που Μεταδίδονται με Διαβιβαστές. Στη συνέχεια εργάστηκε στον ιατρικό τομέα εμβολίων της Pfizer έως τον Δεκέμβριο του 2025, με επιστημονικές αρμοδιότητες για την Ελλάδα, την Κύπρο και τη Μάλτα.</p>
+          <p>Παράλληλα με την κλινική του δραστηριότητα, συμμετέχει ενεργά στην έρευνα και στην επιστημονική εκπαίδευση. Έχει συγγράψει και συνυπογράψει δημοσιεύσεις σε διεθνή επιστημονικά περιοδικά και συμμετέχει ως ομιλητής σε παιδιατρικά συνέδρια. Το πρόσφατο ερευνητικό του έργο επικεντρώνεται στον εμβολιασμό κατά την εγκυμοσύνη και στην πρόληψη λοιμώξεων στα νεογνά και στα βρέφη.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCIENTIFIC WORK / PUBLICATIONS — pointer to epistimoniko-ergo -->
+  <section class="bio tint" aria-labelledby="dimosieuseis">
+    <div class="wrap">
+      <div class="bio-split">
+        <div>
+          <header class="section-head" data-rise>
+            <h2 id="dimosieuseis" class="section-title">Επιστημονικές Εργασίες / Δημοσιεύσεις</h2>
+            <p class="section-sub">Ο πλήρης κατάλογος των επιστημονικών εργασιών και δημοσιεύσεων βρίσκεται στη σελίδα του επιστημονικού έργου.</p>
+          </header>
+          <p data-rise><a class="link-arrow" href="/epistimoniko-ergo/">Δείτε όλο το επιστημονικό έργο</a></p>
+        </div>
+        <figure class="doctor-photo-secondary" data-rise>
+          <img src="/assets/img/doctor/new/doctor-consultation-900.webp"
+               srcset="/assets/img/doctor/new/doctor-consultation-450.webp 450w, /assets/img/doctor/new/doctor-consultation-900.webp 900w"
+               sizes="(min-width: 920px) 380px, 90vw"
+               alt="Ο Μάριος Δέτσης χαμογελά και κρατά σημειώσεις στο γραφείο, απέναντι από μια γυναίκα που φαίνεται από πίσω"
+               width="900" height="1200" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERSHIPS / COLLABORATIONS -->
+  <section class="partners" aria-labelledby="synergasies">
+    <div class="wrap">
+      <header class="section-head center" data-rise>
+        <h2 id="synergasies" class="section-title">Μέλος / Συνεργασίες</h2>
+        <p class="section-sub">Επιστημονικές συνεργασίες και μέλος διεθνών οργανισμών</p>
+      </header>
+      <div class="partners-belt" role="img" aria-label="Λογότυπα συνεργατών: Brown University, Πανεπιστήμιο Κύπρου, ESPID, Σύλλογος Παιδιάτρων Αθηνών, ΕΚΠ">
+        <div class="partners-track" data-partners-track>
+          <div class="partners-item"><img src="/assets/img/partners/Synergates-Brown-University.png" alt="Brown University" width="180" height="112" loading="lazy"></div>
+          <div class="partners-item"><img src="/assets/img/partners/Synergates-PanepistimioKyproy.png" alt="Πανεπιστήμιο Κύπρου" width="180" height="112" loading="lazy"></div>
+          <div class="partners-item"><img src="/assets/img/partners/ESPID.png" alt="ESPID" width="180" height="112" loading="lazy"></div>
+          <div class="partners-item"><img src="/assets/img/partners/Synergates-SyllogosAthinon.png" alt="Σύλλογος Παιδιάτρων Αθηνών" width="180" height="112" loading="lazy"></div>
+          <div class="partners-item"><img src="/assets/img/partners/EKP.png" alt="ΕΚΠ" width="180" height="112" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy" aria-labelledby="philosophy-title">
+    <div class="wrap">
+      <header class="section-head center" data-rise>
+        <h2 id="philosophy-title" class="lead">Υπηρεσίες υψηλής ποιότητας, για κάθε οικογένεια.</h2>
+      </header>
+      <p class="section-sub" data-rise>Έμφαση στη σωστή ανάπτυξη του παιδιού, στην πρόληψη και στη φροντίδα του άρρωστου παιδιού — με βάση τις τρέχουσες διεθνείς κατευθυντήριες οδηγίες και χρήση φαρμάκων μόνο όταν είναι πραγματικά απαραίτητο.</p>
+    </div>
+  </section>
+
+  <CtaBand title={"Κλείστε ραντεβού με τον ιατρό."} text={"Παιδιατρική φροντίδα με επιστημονική τεκμηρίωση και ουσιαστική στήριξη της οικογένειας. Στείλτε αίτημα ηλεκτρονικά ή καλέστε το ιατρείο που σας εξυπηρετεί."} />
+</BaseLayout>

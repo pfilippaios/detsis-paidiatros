@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title={"Ραντεβού | Μάριος Δέτσης, Παιδίατρος"}
+  description={"Στείλτε αίτημα ραντεβού στον παιδίατρο Μάριο Δέτση για το ιατρείο Ζωγράφου ή Βριλησσίων, ή καλέστε απευθείας."}
+>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Διαδρομή"><ol><li><a href="/">Αρχική</a></li><li aria-current="page">Ραντεβού</li></ol></nav>
+      <h1>Ραντεβού</h1>
+      <p class="page-hero-sub">Μπορείτε να στείλετε αίτημα ραντεβού μέσω της φόρμας, συμπληρώνοντας τα βασικά στοιχεία και τον λόγο επίσκεψης. Η γραμματεία θα επικοινωνήσει μαζί σας για επιβεβαίωση. Για επείγον περιστατικό ή ανάγκη άμεσου ραντεβού, είναι προτιμότερο να καλέσετε τηλεφωνικά.</p>
+    </div>
+  </section>
+
+  <section class="bio">
+    <div class="wrap bio-split">
+      <form class="form" data-appointment action="mailto:grammateia@detsis-paidiatros.gr" method="post" enctype="text/plain">
+        <p class="hp" aria-hidden="true"><label>Μην συμπληρώνετε αυτό το πεδίο<input type="text" name="website" tabindex="-1" autocomplete="off"></label></p>
+        <div class="form-grid-2">
+          <div class="field"><label for="parent">Όνομα γονέα <span class="req">*</span></label><input id="parent" name="Ονομα_γονέα" type="text" required></div>
+          <div class="field"><label for="phone">Τηλέφωνο <span class="req">*</span></label><input id="phone" name="Τηλέφωνο" type="tel" required></div>
+        </div>
+        <div class="field"><label for="email">Email <span class="req">*</span></label><input id="email" name="Email" type="email" required></div>
+        <div class="field">
+          <label>Ιατρείο <span class="req">*</span></label>
+          <div class="radio-group">
+            <label class="radio-opt"><input type="radio" name="Ιατρείο" value="Ζωγράφου" required> Ζωγράφου</label>
+            <label class="radio-opt"><input type="radio" name="Ιατρείο" value="Βριλήσσια"> Βριλήσσια</label>
+          </div>
+        </div>
+        <div class="form-grid-2">
+          <div class="field"><label for="child">Όνομα &amp; ηλικία παιδιού</label><input id="child" name="Παιδί" type="text" placeholder="προαιρετικό"></div>
+          <div class="field"><label for="day">Προτιμώμενη ημέρα</label><input id="day" name="Προτιμώμενη_ημέρα" type="date"></div>
+        </div>
+        <div class="field"><label for="msg">Μήνυμα / λόγος επίσκεψης</label><textarea id="msg" name="Μήνυμα"></textarea></div>
+        <button class="btn btn-accent btn-lg" type="submit">Αποστολή αιτήματος</button>
+        <p class="form-note">Μετά την αποστολή, η γραμματεία θα επικοινωνήσει μαζί σας εντός των ωρών λειτουργίας για την επιβεβαίωση του ραντεβού. Τα στοιχεία που συμπληρώνετε χρησιμοποιούνται μόνο για τον προγραμματισμό του ραντεβού.</p>
+      </form>
+
+      <aside class="form-aside">
+        <h3>Προτιμάτε τηλέφωνο;</h3>
+        <div class="info-rows">
+          <div><svg class="icn" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div class="v"><span class="k">Ζωγράφου</span><a href="tel:+302103007410">210 300 7410</a><br><a href="tel:+306937000410">693 7000 410</a></div></div>
+          <div><svg class="icn" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div class="v"><span class="k">Βριλήσσια</span><a href="tel:+302103007410">210 300 7410</a><br><a href="tel:+306937000410">693 7000 410</a></div></div>
+          <div><svg class="icn" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div class="v"><span class="k">Ωράριο</span>Κατόπιν ραντεβού</div></div>
+          <div><svg class="icn" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><div class="v"><span class="k">Email</span><a href="mailto:grammateia@detsis-paidiatros.gr">grammateia@detsis-paidiatros.gr</a></div></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

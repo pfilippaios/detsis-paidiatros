@@ -1,0 +1,236 @@
+/* Large page sections: homepage hero, intro, stacking cards, and the section
+   wrappers (.clinics, .articles, .reviews, .partners) that inner pages reuse. */
+
+/* ===== Hero (homepage) ===== */
+.hero {
+  position: relative; overflow: hidden;
+  padding-block: clamp(2rem, 4vw, 4.5rem) clamp(3rem, 6vw, 6rem);
+  background:
+    radial-gradient(120% 90% at 100% 0%, var(--sky-200), transparent 55%),
+    radial-gradient(90% 80% at 0% 100%, var(--coral-100), transparent 50%),
+    radial-gradient(70% 65% at 85% 95%, var(--lilac-100), transparent 55%),
+    radial-gradient(60% 55% at 15% 10%, var(--rose-100), transparent 55%),
+    var(--cream);
+}
+.hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.05fr .95fr; gap: var(--sp-6); align-items: center; }
+.hero-title { font-size: var(--fs-hero); font-weight: 700; color: var(--navy-700); }
+.hero-title .accent { color: var(--coral-500); font-family: var(--font-display); font-weight: 100; }
+.hero-sub { font-size: var(--fs-500); color: var(--steel-500); margin-top: var(--sp-3); max-width: 30rem; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-top: var(--sp-4); }
+
+/* doctor cutout shown in full, over a circular coloured backdrop */
+.hero-portrait { position: relative; display: flex; justify-content: center; align-items: flex-end; min-height: min(86vw, 540px); }
+.portrait-blob {
+  position: absolute; bottom: 6%; left: 50%; transform: translateX(-50%); z-index: 0;
+  width: min(96%, 440px); aspect-ratio: 1;
+  background: linear-gradient(160deg, var(--dusty-300), var(--steel-500));
+  border-radius: 50%; box-shadow: var(--shadow-md);
+}
+.portrait-doctor {
+  position: relative; z-index: 1; width: min(112%, 560px); height: auto;
+  filter: drop-shadow(0 24px 40px rgba(24,47,71,.22));
+}
+
+/* decorative brand circles (GSAP floats them on desktop) */
+.circle { position: absolute; z-index: 1; pointer-events: none; aspect-ratio: 1; border-radius: 50%; }
+.circle-sun  { width: clamp(110px, 14vw, 200px); background: var(--sun-400); top: 10%; right: 5%; opacity: .85; }
+.circle-ring { width: clamp(70px, 9vw, 130px); border: 12px solid var(--coral-500); bottom: 14%; left: 46%; opacity: .85; }
+.circle-mint { width: clamp(60px, 7vw, 100px); background: var(--mint-300); top: 24%; left: 6%; opacity: .85; }
+.circle-rose { width: clamp(54px, 6vw, 90px); background: var(--rose-300); bottom: 22%; right: 9%; opacity: .8; }
+
+@media (min-width: 921px) {
+  /* hero fills the viewport while the floating header overlays it */
+  .hero { min-height: 100svh; display: grid; align-items: stretch; }
+  .hero-grid { align-items: end; }
+  .hero-copy { align-self: center; margin-top: clamp(3.5rem, 10vh, 7rem); }
+  .hero-title { font-size: min(var(--fs-hero), 13vh); }
+  /* cancel the hero's bottom padding so the doctor's cropped torso sits flush on the hero edge */
+  .hero-portrait { align-self: stretch; min-height: 0; margin-bottom: calc(-1 * clamp(3rem, 6vw, 6rem)); }
+  /* size the doctor by height (capped by viewport height so he never overflows a short screen) */
+  .portrait-doctor { width: auto; max-width: none; height: clamp(360px, 82vh, 1100px); }
+  .portrait-blob { width: clamp(320px, 42vh, 620px); bottom: 4%; }
+}
+@media (max-width: 920px) {
+  /* phone hero: doctor is a backdrop pinned to the bottom, copy + buttons layered
+     over him, the whole thing fits one viewport */
+  .hero {
+    min-height: 100svh;
+    display: flex; flex-direction: column;
+    padding-block: calc(var(--header-bar-height) + (var(--header-float-y) * 2) + 2rem) 0;
+  }
+  .hero-grid { gap: 0; text-align: center; display: flex; flex-direction: column; flex: 1; }
+  .hero-copy { margin-inline: auto; width: 100%; position: relative; z-index: 3; display: flex; flex-direction: column; flex: 1; }
+  .hero-title { font-size: clamp(2.4rem, 13vw, 3.6rem); line-height: .96; }
+  .hero-sub { font-size: clamp(1.05rem, 4.8vw, 1.25rem); line-height: 1.45; margin-inline: auto; margin-top: 1rem; max-width: 25rem; }
+  /* buttons drop to the bottom of the copy column, over the doctor's torso */
+  .hero-cta { justify-content: center; margin-top: auto; margin-bottom: clamp(2rem, 9vh, 5rem); }
+  .hero-cta .btn { width: min(100%, 19rem); min-height: 48px; }
+  /* full-width strip pinned to the hero bottom; flex-centre the cutout.
+     (an absolute box with only `left` set shrinks-to-fit and squeezes the doctor) */
+  .hero-portrait {
+    position: absolute; inset: auto 0 0 0; z-index: 1;
+    width: auto; min-height: 0; margin: 0; line-height: 0;
+  }
+  .portrait-blob { width: min(78vw, 400px); bottom: 4%; }
+  .portrait-doctor {
+    width: auto; max-width: none; /* height drives size */
+    height: min(50svh, 460px);
+    transform: translateX(-4%); /* subject sits right of centre in the PNG — nudge to optical centre */
+  }
+  .circle-sun { width: clamp(82px, 23vw, 116px); top: 19%; right: -4%; }
+  .circle-ring { width: clamp(54px, 16vw, 82px); border-width: 9px; bottom: 9%; left: 50%; }
+
+  main > .hero + section ~ section { margin-top: clamp(2rem, 10vw, 3.75rem); }
+  main > .hero ~ section.cta { margin-top: clamp(2.5rem, 12vw, 4.5rem); }
+}
+/* tablet: grow the doctor and cap the copy width so there's no dead band under the subtitle */
+@media (min-width: 581px) and (max-width: 920px) {
+  .hero-copy { max-width: 34rem; margin-top: clamp(2rem, 7vh, 5rem); }
+  .hero-title { font-size: clamp(3rem, 8vw, 4.4rem); }
+  .hero-sub { max-width: 30rem; }
+  .portrait-doctor { height: min(62svh, 660px); }
+  .portrait-blob { width: min(56vw, 460px); bottom: 4%; }
+}
+@media (max-width: 580px) {
+  .circle-mint { display: none; }
+  .hero-grid { gap: var(--sp-2); }
+  .hero-title { font-size: clamp(2rem, 10.5vw, 2.9rem); }
+  /* two compact buttons side by side → shorter copy column, doctor sits lower */
+  .hero-cta { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-2); width: 100%; margin-inline: auto; }
+  .hero-cta .btn { width: 100%; font-size: .95rem; padding: .85em 1em; }
+}
+
+/* ===== Section wrappers + big decorative corner circles =====
+   The circles are ::before pseudo-elements; content (.wrap) rides above them. */
+.intro, .services, .clinics { overflow: hidden; }
+/* articles/reviews keep circles whole vertically but clip horizontal bleed (no h-scroll) */
+.articles, .reviews { overflow-x: clip; }
+.intro > .wrap, .services > .wrap, .clinics > .wrap, .articles > .wrap, .reviews > .wrap { position: relative; z-index: 1; }
+.intro::before, .services::before, .clinics::before, .articles::before, .reviews::before {
+  content: ""; position: absolute; z-index: 0; aspect-ratio: 1; border-radius: 50%; pointer-events: none;
+  width: clamp(280px, 36vw, 560px);
+}
+.intro::before    { background: var(--sky-200);   bottom: -20%; right: -12%; opacity: .4; }
+.services::before { background: var(--sun-400);   bottom: -22%; left: -12%;  opacity: .25; }
+.clinics::before  { background: var(--mint-300);  top: clamp(1.5rem, 4vw, 4rem); right: -8%; opacity: .4; }
+.articles::before { background: var(--lilac-300); bottom: clamp(1.5rem, 4vw, 4rem); left: clamp(1rem, 4vw, 4rem); opacity: .45; }
+.reviews::before  { background: var(--rose-300);  top: -14%; right: -12%; opacity: .55; }
+
+.clinics { background: var(--paper); }
+.articles { background: var(--mist-100); border-radius: var(--radius-xl) var(--radius-xl) 0 0; }
+.reviews, .partners { background: var(--mist-100); }
+.articles, .reviews, .partners { padding-block: clamp(4rem, 8vw, 7rem); }
+
+@media (max-width: 920px) {
+  .intro::before, .services::before, .clinics::before, .articles::before, .reviews::before { display: none; }
+}
+
+/* ===== Intro / bio (homepage) — editorial portrait split ===== */
+.intro-grid { display: grid; gap: clamp(2.5rem, 6vw, 5rem); align-items: center; }
+.intro-heading { font-size: var(--fs-900); line-height: var(--lh-snug); color: var(--navy-900); margin-bottom: var(--sp-3); max-width: 16ch; }
+.intro-body .lead { max-width: 46ch; color: var(--steel-500); font-size: var(--fs-500); line-height: var(--lh-body); }
+.intro .link-arrow { font-size: var(--fs-500); margin-top: var(--sp-2); }
+
+/* credential rail */
+.cred-list { list-style: none; display: grid; gap: var(--sp-1); margin: var(--sp-4) 0; max-width: 46ch; }
+.cred-list li {
+  display: grid; grid-template-columns: auto 1fr; align-items: center; gap: var(--sp-2);
+  padding: .65rem .95rem; border-radius: var(--radius);
+  background: var(--paper); box-shadow: var(--shadow-sm);
+  font-size: var(--fs-300); font-weight: 600; color: var(--navy-700);
+  transition: transform var(--t-fast) var(--ease-out);
+}
+.cred-list li:hover { transform: translateX(6px); }
+.cred-key { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-400); color: var(--coral-500); min-width: 3.6em; line-height: 1; }
+
+/* photo collage — doctor portrait + clinic life */
+.intro-collage {
+  position: relative; justify-self: center;
+  width: min(460px, 90vw); aspect-ratio: 1 / 1;
+  display: grid; grid-template-columns: 1.05fr .95fr; grid-template-rows: 1fr 1fr;
+  gap: clamp(.7rem, 1.6vw, 1.1rem);
+}
+.cl {
+  position: relative; z-index: 2; width: 100%; height: 100%; object-fit: cover;
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-md);
+  transition: transform var(--t-med) var(--ease-back);
+}
+.cl-doc  { grid-column: 1; grid-row: 1 / 3; object-position: top center; border-radius: var(--radius-xl) var(--radius-lg) var(--radius-lg) var(--radius-xl); }
+.cl-play { grid-column: 2; grid-row: 1; transform: rotate(2deg); }
+.cl-exam { grid-column: 2; grid-row: 2; transform: rotate(-2deg); }
+.intro-collage:hover .cl-play, .intro-collage:hover .cl-exam { transform: rotate(0); }
+.intro-blob {
+  position: absolute; z-index: 1; inset: -9% -11% auto auto; width: 70%; aspect-ratio: 1;
+  background: var(--lilac-100); border-radius: 42% 58% 60% 40% / 48% 42% 58% 52%;
+}
+.intro-ring {
+  position: absolute; z-index: 1; left: -8%; bottom: 4%; width: 32%; aspect-ratio: 1;
+  border: 14px solid var(--sun-400); border-radius: 50%; opacity: .8;
+}
+.intro-badge {
+  position: absolute; z-index: 3; left: 6%; bottom: -7%;
+  background: var(--paper); border-radius: var(--radius); padding: .7rem 1.1rem;
+  box-shadow: var(--shadow-md); display: grid; gap: .1rem;
+}
+.intro-badge strong { font-size: var(--fs-400); color: var(--navy-900); }
+.intro-badge span { font-size: var(--fs-200); color: var(--steel-500); }
+
+@media (min-width: 860px) {
+  .intro-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); }
+  .intro-collage { justify-self: start; }
+}
+@media (min-width: 921px) {
+  /* sized to the viewport height so the pinned card fits one screen */
+  .intro-grid { gap: clamp(1.5rem, 4vw, 4rem); }
+  .intro-heading { font-size: clamp(1.5rem, 0.9rem + 2.2vh, 2.8rem); margin-bottom: clamp(0.5rem, 1.5vh, 1.5rem); }
+  .intro-body .lead { font-size: clamp(1rem, 0.85rem + 0.55vh, 1.45rem); line-height: 1.38; }
+  .cred-list { margin-block: clamp(0.7rem, 2vh, 2rem); gap: clamp(0.25rem, 0.8vh, 0.6rem); }
+  .cred-list li { padding-block: clamp(0.4rem, 1.1vh, 0.7rem); }
+  .intro-collage { width: min(440px, 44vh, 90vw); }
+}
+@media (max-width: 920px) {
+  .intro-grid { gap: var(--sp-4); }
+  .intro-collage { width: min(100%, 390px); order: 2; }
+  .intro-badge { left: 5%; right: 5%; bottom: -1.5rem; padding: .65rem .9rem; }
+  .intro-body { order: 1; }
+  .intro-heading { max-width: 12ch; font-size: clamp(1.65rem, 7.2vw, 2.35rem); }
+  .intro-body .lead { max-width: none; font-size: 1.05rem; line-height: 1.55; }
+  .cred-list { max-width: none; }
+  .cred-list li { align-items: start; border-radius: 18px; }
+}
+@media (max-width: 580px) {
+  /* keep the 3-photo puzzle layout; only drop the decorative blob + ring */
+  .cl { border-radius: 22px; }
+  .intro-blob, .intro-ring { display: none; }
+  .cred-list li { grid-template-columns: 1fr; gap: .25rem; }
+}
+
+/* ===== Stacking cards (homepage) =====
+   CSS sticky piles the sections under the hero; main.js scales each one down as the
+   next slides over it. Each card is at least one viewport tall and centres its content.
+   The trailing margin is the "dwell": extra scroll before the next card arrives. */
+.stack-card {
+  position: sticky; top: 84px;
+  min-height: calc(100svh - 84px);
+  display: flex; align-items: center;
+  padding-block: clamp(1.5rem, 4vh, 4rem);
+  margin-bottom: var(--card-dwell, 45vh);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 -18px 50px rgba(24, 47, 71, .14);
+  overflow: hidden;
+  background: var(--paper); /* opaque so it covers the card beneath */
+  will-change: transform;
+}
+.stack-card .section-head { margin-bottom: clamp(1.25rem, 3vh, 3rem); }
+.intro.stack-card { background: var(--cream); }
+
+@media (min-width: 921px) {
+  .stack-card .section-foot { margin-top: clamp(1rem, 3vh, 3rem); }
+  .stack-card .section-title { font-size: clamp(1.6rem, 1rem + 2.4vh, 4.25rem); }
+  .stack-card .section-sub { font-size: clamp(1rem, 0.9rem + 0.5vh, 1.6rem); }
+}
+/* Narrow or short screens can't hold a card in one viewport: drop the pin and let the
+   cards flow. overflow-x: clip contains the corner circles without creating a scroll container. */
+@media (max-width: 920px), (max-height: 760px) {
+  .stack-card { position: static; min-height: 0; overflow-x: clip; overflow-y: visible; margin-bottom: 0; box-shadow: var(--shadow-sm); }
+}

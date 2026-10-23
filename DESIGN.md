@@ -19,14 +19,14 @@ this doc is the *look and motion* layer.
   - ⚠️ Action needed: enable the **Greek subset** in the Adobe Fonts project, else Greek falls to system sans.
 - `new-hero-hairline` (weight 100) → large display accents (hero accent word).
 - `new-hero` (400 body / 700 headings).
-- Fluid scale via `clamp()` (~1.25 minor third), tokens in [assets/css/tokens.css](assets/css/tokens.css).
+- Fluid scale via `clamp()` (~1.25 minor third), tokens in [src/styles/tokens.css](src/styles/tokens.css).
 
 ## Color
 
 Logo blue grounds the system; a wider playful spectrum (yellow, mint, **rose, lilac**)
 echoes the doctor's Facebook social-post grid (`ref1.jpeg`/`ref2.jpeg` — navy + mustard +
 pink + lavender + sky + sage). Hex are the actual token values in
-[assets/css/tokens.css](assets/css/tokens.css).
+[src/styles/tokens.css](src/styles/tokens.css).
 
 | Token | Hex | Use |
 |---|---|---|
@@ -56,7 +56,10 @@ the single CTA colour (the persona-detstvo "warm button on cool ground" move).
 
 ## Motion (GSAP)
 
-Full GSAP bundle vendored at [assets/vendor/gsap/](assets/vendor/gsap/) (gsap + ScrollTrigger + SplitText).
+GSAP from npm (`gsap`, all plugins included). [src/scripts/main.js](src/scripts/main.js) dynamically
+imports gsap + ScrollTrigger + SplitText only on desktop (>920px) with motion allowed — mobile and
+reduced-motion visitors never download it. Also used: stacking-card recede (scrub) and the partners
+logo marquee.
 
 | Effect | Plugin | Where |
 |---|---|---|
@@ -80,7 +83,7 @@ Candidates for inner pages.
 
 - Semantic landmarks, one H1, skip-link, visible focus (coral ring).
 - `lang="el"`, descriptive alt text.
-- Mobile menu with `aria-expanded`; dropdown works on hover + focus-within.
+- Mobile menu with `aria-expanded`; closes on Escape, outside click, or link click.
 - Below-fold images `loading="lazy"`; portrait eager.
 - No third-party JS except the Adobe Fonts CSS.
 
@@ -88,5 +91,5 @@ Candidates for inner pages.
 - Enable Greek subset in Adobe Fonts kit (blocker for correct rendering).
 - Real clinic photos per location (currently `iatreio1` = Ζωγράφου, `iatreio10` = Βριλήσσια — guess; confirm with client, PLAN open Q6).
 - Newer/approved doctor portrait if available (PLAN open Q7).
-- All interior pages + 22 articles built (ypiresies, clinics, arthra, FAQ, rantevou, epikoinonia, cookies). Generator: `scratchpad/build.py`.
+- All interior pages + 22 articles built (ypiresies, clinics, arthra, FAQ, rantevou, epikoinonia, cookies). Now Astro pages; articles are Markdown in `src/content/articles/`.
 - Appointment form has no backend — `mailto:` fallback for now (PLAN open Q4).

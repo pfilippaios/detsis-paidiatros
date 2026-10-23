@@ -1,0 +1,36 @@
+---
+interface Props {
+  /** href of the top-level menu item to mark as the current section */
+  current?: string;
+}
+const { current } = Astro.props;
+
+const items = [
+  { href: '/', label: 'Αρχική' },
+  { href: '/o-iatros/', label: 'Ο Ιατρός' },
+  { href: '/ypiresies/', label: 'Υπηρεσίες' },
+  { href: '/iatreia/', label: 'Ιατρεία' },
+  { href: '/arthra/', label: 'Άρθρα' },
+  { href: '/sychnes-erotiseis/', label: 'Συχνές Ερωτήσεις' },
+  { href: '/epikoinonia/', label: 'Επικοινωνία' },
+];
+---
+<header class="site-header" data-header>
+  <div class="wrap header-inner">
+    <a class="brand" href="/" aria-label="Μάριος Δέτσης, Παιδίατρος — Αρχική">
+      <img src="/assets/img/brand/detsis_logo.webp" alt="Μάριος Δέτσης, Παιδίατρος" width="195" height="64">
+    </a>
+    <nav class="nav" aria-label="Κύριο μενού">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav-toggle-bar"></span><span class="sr-only">Μενού</span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        {items.map((item) => (
+          <li><a href={item.href} aria-current={item.href === current ? 'page' : undefined}>{item.label}</a></li>
+        ))}
+        <li class="nav-cta"><a class="btn btn-accent" href="/rantevou/">Κλείστε ραντεβού</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-accent header-cta" href="/rantevou/">Ραντεβού</a>
+  </div>
+</header>

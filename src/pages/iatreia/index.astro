@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+---
+<BaseLayout
+  title={"Ιατρεία Ζωγράφου & Βριλησσίων | Μάριος Δέτσης, Παιδίατρος"}
+  description={"Παιδιατρικά ιατρεία στη Ζωγράφου (Ευδήλου 9–11, Πλ. Ελευθερίας) και στα Βριλήσσια (Γράμμου 23). Επισκέψεις κατόπιν ραντεβού. Τηλ. 210 300 7410."}
+  nav={"/iatreia/"}
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Αρχική",
+          "item": "https://detsis-paidiatros.gr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Ιατρεία",
+          "item": "https://detsis-paidiatros.gr/iatreia/"
+        }
+      ]
+    }
+  ]}
+>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Διαδρομή"><ol><li><a href="/">Αρχική</a></li><li aria-current="page">Ιατρεία</li></ol></nav>
+      <h1>Ιατρεία</h1>
+      <p class="page-hero-sub">Στα ιατρεία μας παρέχονται πλήρεις παιδιατρικές υπηρεσίες με στόχο τη σωστή ανάπτυξη και υγεία του βρέφους σε ιδιαίτερα φιλόξενους και λειτουργικούς χώρους αναμονής για γονείς και παιδιά.</p>
+      <div class="hero-cta">
+        <a class="btn btn-accent btn-lg" href="/rantevou/">Κλείστε Ραντεβού</a>
+        <a class="btn btn-ghost btn-lg" href="tel:+302103007410">Καλέστε τώρα</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="clinics">
+    <div class="wrap">
+      <div class="clinic-grid loc-grid" data-stagger>
+        <article class="loc-col">
+          <a class="clinic-card" href="/iatreio-zografou/">
+            <div class="clinic-photo"><img src="/assets/img/clinics/zografou/waiting-room-wide-1200.webp" srcset="/assets/img/clinics/zografou/waiting-room-wide-600.webp 600w, /assets/img/clinics/zografou/waiting-room-wide-1200.webp 1200w" sizes="(max-width: 920px) 100vw, 50vw" alt="Ιατρείο Ζωγράφου" width="1200" height="800" loading="lazy"></div>
+            <div class="clinic-body">
+              <h2>Ιατρείο Ζωγράφου</h2>
+              <span class="link-arrow">Δείτε το ιατρείο</span>
+            </div>
+          </a>
+          <div class="info-card">
+            <div class="info-rows">
+              <div><svg class="icn" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="v"><span class="k">Διεύθυνση</span>Ευδήλου 9–11, Πλ. Ελευθερίας, Ζωγράφου</div></div>
+              <div><svg class="icn" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div class="v"><span class="k">Τηλέφωνα</span><a href="tel:+302103007410">210 300 7410</a><br><a href="tel:+306937000410">693 7000 410</a></div></div>
+              <div><svg class="icn" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div class="v"><span class="k">Ωράριο</span>Κατόπιν ραντεβού</div></div>
+            </div>
+            <div class="info-actions">
+              <a class="btn btn-accent" href="/rantevou/">Κλείστε ραντεβού</a>
+              <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=Ευδήλου+9-11,+Πλατεία+Ελευθερίας,+Ζωγράφου" target="_blank" rel="noopener">Άνοιγμα στους Χάρτες</a>
+            </div>
+          </div>
+        </article>
+        <article class="loc-col">
+          <a class="clinic-card" href="/iatreio-vrilission/">
+            <div class="clinic-photo"><img src="/assets/img/clinics/vrilissia/exam-room-desk-1200.webp" srcset="/assets/img/clinics/vrilissia/exam-room-desk-600.webp 600w, /assets/img/clinics/vrilissia/exam-room-desk-1200.webp 1200w" sizes="(max-width: 920px) 100vw, 50vw" alt="Ιατρείο Βριλησσίων" width="1200" height="800" loading="lazy"></div>
+            <div class="clinic-body">
+              <h2>Ιατρείο Βριλησσίων</h2>
+              <span class="link-arrow">Δείτε το ιατρείο</span>
+            </div>
+          </a>
+          <div class="info-card">
+            <div class="info-rows">
+              <div><svg class="icn" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="v"><span class="k">Διεύθυνση</span>Γράμμου 23, Βριλήσσια</div></div>
+              <div><svg class="icn" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div class="v"><span class="k">Τηλέφωνα</span><a href="tel:+302103007410">210 300 7410</a><br><a href="tel:+306937000410">693 7000 410</a></div></div>
+              <div><svg class="icn" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div class="v"><span class="k">Ωράριο</span>Κατόπιν ραντεβού</div></div>
+            </div>
+            <div class="info-actions">
+              <a class="btn btn-accent" href="/rantevou/">Κλείστε ραντεβού</a>
+              <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=Γράμμου+23,+Βριλήσσια" target="_blank" rel="noopener">Άνοιγμα στους Χάρτες</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="clinics">
+    <div class="wrap">
+      <header class="section-head" data-rise>
+        <h2 class="section-title">Ο χώρος των ιατρείων</h2>
+        <p class="section-sub">Φιλόξενοι και λειτουργικοί χώροι αναμονής για γονείς και παιδιά.</p>
+      </header>
+      <ul class="clinic-gallery loc-gallery" data-stagger>
+        <li><figure><img src="/assets/img/home/web/clinic-playroom-wide-780.jpg" alt="Χώρος αναμονής με παιδική γωνιά" width="780" height="520" loading="lazy"><figcaption>Χώρος αναμονής</figcaption></figure></li>
+        <li><figure><img src="/assets/img/home/web/clinic-children-play-corner-780.jpg" alt="Παιδιά στην παιδική γωνιά του ιατρείου" width="780" height="520" loading="lazy"><figcaption>Παιδική γωνιά</figcaption></figure></li>
+        <li><figure><img src="/assets/img/home/web/clinic-child-playing-780.jpg" alt="Παιδί παίζει στο ιατρείο" width="780" height="520" loading="lazy"><figcaption>Παιχνίδι</figcaption></figure></li>
+        <li><figure><img src="/assets/img/home/web/clinic-consultation-room-780.jpg" alt="Χώρος εξέτασης και συμβουλευτικής" width="780" height="520" loading="lazy"><figcaption>Εξέταση</figcaption></figure></li>
+        <li><figure><img src="/assets/img/home/web/clinic-exam-aquarium-child-780.jpg" alt="Παιδί δίπλα στο ενυδρείο του ιατρείου" width="780" height="520" loading="lazy"><figcaption>Φροντίδα</figcaption></figure></li>
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand title={"Κλείστε ραντεβού με τον ιατρό."} text={"Στείλτε αίτημα ηλεκτρονικά ή καλέστε απευθείας το ιατρείο που σας εξυπηρετεί."} />
+</BaseLayout>

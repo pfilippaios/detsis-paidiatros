@@ -5,3 +5,8 @@ _ref/
 
 # screenshots from visual-check
 shots/
+
+# astro
+node_modules/
+dist/
+.astro/

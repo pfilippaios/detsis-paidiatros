@@ -1,0 +1,102 @@
+/* Inner-page layouts: bio prose sections, doctor page, services hub, clinics hub,
+   article detail. Loaded last so these can refine the shared components. */
+
+/* ===== Bio / prose sections ===== */
+.bio { background: var(--paper); }
+.bio.tint { background: var(--mist-100); }
+.bio-prose { color: var(--steel-500); font-size: var(--fs-400); max-width: var(--maxw-text); }
+.bio-prose p + p { margin-top: var(--sp-3); }
+.bio-list { display: grid; gap: var(--sp-2); margin-top: var(--sp-4); max-width: var(--maxw-text); }
+.bio-list li { position: relative; padding-left: 2.1rem; color: var(--ink); font-size: var(--fs-400); line-height: var(--lh-body); }
+.bio-list li::before { content: "✓"; position: absolute; left: 0; top: .05em; color: var(--coral-500); font-weight: 700; }
+.bio-list.pubs li::before { content: "›"; font-size: 1.3em; line-height: 1; top: -.05em; }
+.bio-note { margin-top: var(--sp-4); color: var(--steel-500); font-size: var(--fs-300); max-width: var(--maxw-text); }
+.bio-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .78fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; }
+.bio-split .section-head { margin-bottom: var(--sp-4); }
+/* photo card = .clinic-card with a smaller caption */
+.bio-photo-card { min-height: clamp(280px, 32vw, 430px); }
+.bio-photo-card .clinic-body { padding: var(--sp-3); }
+.bio-photo-card .clinic-body h3 { font-size: var(--fs-500); }
+.bio-photo-card.is-portrait .clinic-photo img { object-position: center top; }
+.science-photo-grid { margin: var(--sp-6) 0; }
+
+@media (max-width: 920px) {
+  .bio-split { grid-template-columns: 1fr; }
+  .bio-photo-card { min-height: 340px; }
+}
+
+/* philosophy — centred statement band */
+.philosophy { background: var(--mist-100); text-align: center; }
+.philosophy .lead { max-width: 26ch; margin-inline: auto; font-size: var(--fs-700); color: var(--navy-700); line-height: 1.3; }
+.philosophy .section-sub { margin-inline: auto; max-width: 54ch; }
+
+/* ===== Ο Ιατρός — sticky portrait + bio ===== */
+.doctor-bio-grid { display: grid; gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+.doctor-portrait { width: min(400px, 100%); justify-self: center; }
+.doctor-photo-secondary { width: min(380px, 100%); justify-self: center; }
+.doctor-portrait img,
+.doctor-photo-secondary img {
+  width: 100%; aspect-ratio: 3 / 4; object-fit: cover;
+  border-radius: var(--radius-xl); box-shadow: var(--shadow-md);
+}
+.doctor-bio-body .section-title { font-size: var(--fs-700); line-height: var(--lh-snug); margin-bottom: var(--sp-3); max-width: 22ch; }
+.doctor-bio-body .bio-prose + .section-title { margin-top: var(--sp-6); }
+
+@media (min-width: 920px) {
+  .doctor-bio-grid { grid-template-columns: minmax(280px, 400px) minmax(0, 1fr); }
+  .doctor-portrait { position: sticky; top: 7rem; }
+}
+
+/* ===== Υπηρεσίες — prose + full-height photo, then 2-column service cards ===== */
+.care-split { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: stretch; }
+.care-split .bio-prose { max-width: none; align-self: center; }
+.care-photo { position: relative; min-height: 420px; border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-md); }
+.care-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+.service-grid { grid-template-columns: repeat(2, 1fr); gap: var(--sp-4); }
+.service-grid .service-card { padding: var(--sp-4) var(--sp-4) var(--sp-3); }
+.service-grid .service-thumb { width: 88px; height: 88px; }
+.service-grid .service-card p { line-height: var(--lh-body); }
+.service-grid .svc-when { margin-top: auto; padding-top: var(--sp-2); border-top: 1px solid rgba(31,92,127,.14); font-size: var(--fs-200); opacity: 1; color: var(--steel-500); }
+.service-grid .svc-when strong { color: var(--coral-600); }
+
+@media (max-width: 920px) {
+  .care-split { grid-template-columns: 1fr; }
+  .care-photo { min-height: 0; aspect-ratio: 4 / 3; }
+}
+@media (max-width: 580px) {
+  .service-grid { grid-template-columns: 1fr; }
+  .service-grid .service-card { padding: var(--sp-3); }
+  .service-grid .service-thumb { width: 72px; height: 72px; }
+}
+
+/* ===== Ιατρεία hub — photo card + details per clinic ===== */
+.loc-grid { align-items: start; }
+.loc-col { display: flex; flex-direction: column; gap: var(--sp-3); }
+.loc-col .clinic-card { min-height: clamp(240px, 32vh, 360px); }
+.loc-col .clinic-body h2 { color: #fff; font-size: var(--fs-700); }
+.loc-col .clinic-body .link-arrow { display: inline-block; }
+/* the homepage squeezes the gallery to a short strip; the hub page has room */
+.clinic-gallery.loc-gallery img { aspect-ratio: 3 / 2; height: auto; }
+
+/* ===== Article detail ===== */
+.article-hero .topic-tag { transform: rotate(-2deg); }
+.article-meta-line { display: flex; flex-wrap: wrap; gap: var(--sp-2); align-items: center; margin-top: var(--sp-3); color: var(--steel-500); font-weight: 600; font-size: var(--fs-300); }
+.article-section { background: var(--paper); }
+.article-wrap { max-width: 72ch; margin-inline: auto; }
+.article-lead-img { border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin-bottom: var(--sp-4); width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.article-body { font-size: var(--fs-400); color: var(--ink); line-height: var(--lh-body); }
+.article-body > * + * { margin-top: var(--sp-3); }
+.article-body h2 { font-size: var(--fs-700); color: var(--navy-700); margin-top: var(--sp-6); }
+.article-body h3 { font-size: var(--fs-500); color: var(--navy-700); margin-top: var(--sp-4); }
+.article-body ul, .article-body ol { padding-left: 1.4em; display: grid; gap: .5rem; }
+.article-body ul li { list-style: disc; }
+.article-body ol li { list-style: decimal; }
+.article-body strong { color: var(--navy-900); }
+.article-body em { font-style: italic; }
+.article-body a { color: var(--coral-600); border-bottom: 2px solid var(--coral-100); }
+.article-body a:hover { border-color: var(--coral-500); }
+.article-body blockquote { border-left: 4px solid var(--coral-500); padding-left: var(--sp-3); color: var(--steel-500); font-style: italic; }
+.article-body img { border-radius: var(--radius); margin-block: var(--sp-3); }
+.disclaimer { background: var(--mist-100); border-radius: var(--radius); padding: var(--sp-3); font-size: var(--fs-300); color: var(--steel-500); border-left: 4px solid var(--dusty-300); }
+.article-foot { max-width: 72ch; margin: var(--sp-6) auto 0; display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--sp-2); }

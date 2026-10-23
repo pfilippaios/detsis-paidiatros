@@ -1,0 +1,67 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { topics, formatDate, isoDate } from '../../data/topics';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map((article) => ({ params: { slug: article.id }, props: { article } }));
+}
+
+const { article } = Astro.props;
+const { title, description, date, topic, image } = article.data;
+const { Content } = await render(article);
+
+const site = Astro.site!.href.replace(/\/$/, '');
+const url = `${site}/arthra/${article.id}/`;
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    datePublished: isoDate(date),
+    author: { '@type': 'Person', name: 'Μάριος Δέτσης' },
+    publisher: { '@type': 'Organization', name: 'Μάριος Δέτσης, Παιδίατρος' },
+    mainEntityOfPage: url,
+    image: site + image,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Αρχική', item: `${site}/` },
+      { '@type': 'ListItem', position: 2, name: 'Άρθρα', item: `${site}/arthra/` },
+      { '@type': 'ListItem', position: 3, name: title, item: url },
+    ],
+  },
+];
+---
+<BaseLayout title={`${title} | Μάριος Δέτσης, Παιδίατρος`} description={description} ogType="article" nav="/arthra/" jsonLd={jsonLd}>
+  <section class="page-hero article-hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Διαδρομή"><ol><li><a href="/">Αρχική</a></li><li><a href="/arthra/">Άρθρα</a></li><li aria-current="page">{title}</li></ol></nav>
+      <span class={`topic-tag ${topics[topic]}`}>{topic}</span>
+      <h1>{title}</h1>
+      <p class="article-meta-line"><time datetime={isoDate(date)}>{formatDate(date)}</time></p>
+    </div>
+  </section>
+
+  <section class="article-section">
+    <div class="wrap">
+      <div class="article-wrap">
+        <img class="article-lead-img" src={image} alt={title} width="900" height="675" loading="eager">
+        <div class="article-body">
+          <Content />
+        </div>
+        <p class="disclaimer">Το άρθρο έχει ενημερωτικό χαρακτήρα και δεν αντικαθιστά την ιατρική εξέταση ή την εξατομικευμένη συμβουλή του παιδιάτρου. Για το παιδί σας απευθυνθείτε στον γιατρό σας.</p>
+      </div>
+      <div class="article-foot">
+        <a class="link-arrow" href="/arthra/">Όλα τα άρθρα</a>
+        <a class="btn btn-accent" href="/rantevou/">Κλείστε ραντεβού</a>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Κλείστε ραντεβού με τον ιατρό." text="Στείλτε αίτημα ηλεκτρονικά ή καλέστε απευθείας το ιατρείο που σας εξυπηρετεί." />
+</BaseLayout>
